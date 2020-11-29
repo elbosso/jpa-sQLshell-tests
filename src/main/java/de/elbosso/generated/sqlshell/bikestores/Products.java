@@ -2,8 +2,8 @@ package de.elbosso.generated.sqlshell.bikestores;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "products"
@@ -14,11 +14,13 @@ import java.util.HashSet;
 public class Products
 {
 
-	@ManyToMany(mappedBy = "m_productss")
-	private Set<Orders> m_orderss = new HashSet();
+//stores stocks store_id product_id products 
+	@ManyToMany(mappedBy = "m_products_via_stockss")
+	private Set<Stores> m_stores_via_stockss = new HashSet();
 
-	@ManyToMany(mappedBy = "m_productss")
-	private Set<Stores> m_storess = new HashSet();
+//orders order_items order_id product_id products 
+	@ManyToMany(mappedBy = "m_products_via_order_itemss")
+	private Set<Orders> m_orders_via_order_itemss = new HashSet();
 
 	@OneToMany(mappedBy = "m_products", cascade = CascadeType.DETACH)
 	private Set<Stocks> m_stockss = new HashSet();
@@ -35,7 +37,7 @@ public class Products
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_product_id;
+	private Integer m_product_id;
 
 	@NotNull
 	@Column(name = "product_name"
@@ -44,7 +46,7 @@ public class Products
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_product_name;
+	private String m_product_name;
 
 	@ManyToOne
 	@JoinColumn(name = "brand_id", referencedColumnName = "brand_id",foreignKey=@ForeignKey(name="FK__products__brand___3B75D760", value=ConstraintMode.CONSTRAINT))
@@ -63,7 +65,7 @@ public class Products
 		, precision=5
 		, scale=0
 	)
-	private java.lang.Short m_model_year;
+	private Short m_model_year;
 
 	@NotNull
 	@Column(name = "list_price"
@@ -74,11 +76,11 @@ public class Products
 	)
 	private java.math.BigDecimal m_list_price;
 
-	public java.lang.Integer getProduct_id()
+	public Integer getProduct_id()
 	{
 		return m_product_id;
 	}
-	public void setProduct_id(java.lang.Integer v_product_id)
+	public void setProduct_id(Integer v_product_id)
 	{
 		m_product_id=v_product_id;
 	}
@@ -98,11 +100,11 @@ public class Products
 	{
 		m_order_itemss=v_order_itemss;
 	}
-	public java.lang.String getProduct_name()
+	public String getProduct_name()
 	{
 		return m_product_name;
 	}
-	public void setProduct_name(java.lang.String v_product_name)
+	public void setProduct_name(String v_product_name)
 	{
 		m_product_name=v_product_name;
 	}
@@ -122,11 +124,11 @@ public class Products
 	{
 		m_categories=v_categories;
 	}
-	public java.lang.Short getModel_year()
+	public Short getModel_year()
 	{
 		return m_model_year;
 	}
-	public void setModel_year(java.lang.Short v_model_year)
+	public void setModel_year(Short v_model_year)
 	{
 		m_model_year=v_model_year;
 	}
@@ -139,20 +141,20 @@ public class Products
 		m_list_price=v_list_price;
 	}
 
-	public Set<Orders> getOrderss()
+	public Set<Stores> getStores_via_stockss()
 	{
-		return m_orderss;
+		return m_stores_via_stockss;
 	}
-	public void setOrderss(Set<Orders> v_orderss)
+	public void setStores_via_stockss(Set<Stores> v_storess)
 	{
-		m_orderss=v_orderss;
+		m_stores_via_stockss=v_storess;
 	}
-	public Set<Stores> getStoress()
+	public Set<Orders> getOrders_via_order_itemss()
 	{
-		return m_storess;
+		return m_orders_via_order_itemss;
 	}
-	public void setStoress(Set<Stores> v_storess)
+	public void setOrders_via_order_itemss(Set<Orders> v_orderss)
 	{
-		m_storess=v_storess;
+		m_orders_via_order_itemss=v_orderss;
 	}
 }

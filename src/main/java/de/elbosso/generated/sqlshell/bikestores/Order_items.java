@@ -25,7 +25,7 @@ public class Order_items
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_item_id;
+	private Integer m_item_id;
 
 	@ManyToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name="FK__order_ite__produ__4D94879B", value=ConstraintMode.CONSTRAINT))
@@ -39,7 +39,7 @@ public class Order_items
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_quantity;
+	private Integer m_quantity;
 
 	@NotNull
 	@Column(name = "list_price"
@@ -67,11 +67,11 @@ public class Order_items
 	{
 		m_orders=v_orders;
 	}
-	public java.lang.Integer getItem_id()
+	public Integer getItem_id()
 	{
 		return m_item_id;
 	}
-	public void setItem_id(java.lang.Integer v_item_id)
+	public void setItem_id(Integer v_item_id)
 	{
 		m_item_id=v_item_id;
 	}
@@ -83,11 +83,11 @@ public class Order_items
 	{
 		m_products=v_products;
 	}
-	public java.lang.Integer getQuantity()
+	public Integer getQuantity()
 	{
 		return m_quantity;
 	}
-	public void setQuantity(java.lang.Integer v_quantity)
+	public void setQuantity(Integer v_quantity)
 	{
 		m_quantity=v_quantity;
 	}

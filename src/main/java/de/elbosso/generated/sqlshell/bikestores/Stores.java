@@ -2,8 +2,8 @@ package de.elbosso.generated.sqlshell.bikestores;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "stores"
@@ -16,27 +16,28 @@ public class Stores
 
 	@ManyToMany
 	@JoinTable(
+	  name = "stocks",
+	  joinColumns = @JoinColumn(name = "store_id"),
+	  inverseJoinColumns = @JoinColumn(name = "product_id"))
+	private Set<Products> m_products_via_stockss = new HashSet();
+
+	@ManyToMany
+	@JoinTable(
 	  name = "orders",
 	  joinColumns = @JoinColumn(name = "store_id"),
 	  inverseJoinColumns = @JoinColumn(name = "staff_id"))
-	private Set<Staffs> m_staffss = new HashSet();
+	private Set<Staffs> m_staffs_via_orderss = new HashSet();
 
 	@ManyToMany
 	@JoinTable(
 	  name = "staffs",
 	  joinColumns = @JoinColumn(name = "store_id"),
 	  inverseJoinColumns = @JoinColumn(name = "manager_id"))
-	private Set<Staffs> m_staffss = new HashSet();
+	private Set<Staffs> m_staffs_via_staffss = new HashSet();
 
-	@ManyToMany
-	@JoinTable(
-	  name = "stocks",
-	  joinColumns = @JoinColumn(name = "store_id"),
-	  inverseJoinColumns = @JoinColumn(name = "product_id"))
-	private Set<Products> m_productss = new HashSet();
-
-	@ManyToMany(mappedBy = "m_storess")
-	private Set<Customers> m_customerss = new HashSet();
+//customers orders customer_id store_id stores 
+	@ManyToMany(mappedBy = "m_stores_via_orderss")
+	private Set<Customers> m_customers_via_orderss = new HashSet();
 
 	@OneToMany(mappedBy = "m_stores", cascade = CascadeType.DETACH)
 	private Set<Stocks> m_stockss = new HashSet();
@@ -56,7 +57,7 @@ public class Stores
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_store_id;
+	private Integer m_store_id;
 
 	@NotNull
 	@Column(name = "store_name"
@@ -65,55 +66,55 @@ public class Stores
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_store_name;
+	private String m_store_name;
 
 	@Column(name = "phone"
 		, length=25
 		, precision=25
 		, scale=0
 	)
-	private java.lang.String m_phone;
+	private String m_phone;
 
 	@Column(name = "email"
 		, length=255
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_email;
+	private String m_email;
 
 	@Column(name = "street"
 		, length=255
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_street;
+	private String m_street;
 
 	@Column(name = "city"
 		, length=255
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_city;
+	private String m_city;
 
 	@Column(name = "state"
 		, length=10
 		, precision=10
 		, scale=0
 	)
-	private java.lang.String m_state;
+	private String m_state;
 
 	@Column(name = "zip_code"
 		, length=5
 		, precision=5
 		, scale=0
 	)
-	private java.lang.String m_zip_code;
+	private String m_zip_code;
 
-	public java.lang.Integer getStore_id()
+	public Integer getStore_id()
 	{
 		return m_store_id;
 	}
-	public void setStore_id(java.lang.Integer v_store_id)
+	public void setStore_id(Integer v_store_id)
 	{
 		m_store_id=v_store_id;
 	}
@@ -141,93 +142,93 @@ public class Stores
 	{
 		m_staffss=v_staffss;
 	}
-	public java.lang.String getStore_name()
+	public String getStore_name()
 	{
 		return m_store_name;
 	}
-	public void setStore_name(java.lang.String v_store_name)
+	public void setStore_name(String v_store_name)
 	{
 		m_store_name=v_store_name;
 	}
-	public java.lang.String getPhone()
+	public String getPhone()
 	{
 		return m_phone;
 	}
-	public void setPhone(java.lang.String v_phone)
+	public void setPhone(String v_phone)
 	{
 		m_phone=v_phone;
 	}
-	public java.lang.String getEmail()
+	public String getEmail()
 	{
 		return m_email;
 	}
-	public void setEmail(java.lang.String v_email)
+	public void setEmail(String v_email)
 	{
 		m_email=v_email;
 	}
-	public java.lang.String getStreet()
+	public String getStreet()
 	{
 		return m_street;
 	}
-	public void setStreet(java.lang.String v_street)
+	public void setStreet(String v_street)
 	{
 		m_street=v_street;
 	}
-	public java.lang.String getCity()
+	public String getCity()
 	{
 		return m_city;
 	}
-	public void setCity(java.lang.String v_city)
+	public void setCity(String v_city)
 	{
 		m_city=v_city;
 	}
-	public java.lang.String getState()
+	public String getState()
 	{
 		return m_state;
 	}
-	public void setState(java.lang.String v_state)
+	public void setState(String v_state)
 	{
 		m_state=v_state;
 	}
-	public java.lang.String getZip_code()
+	public String getZip_code()
 	{
 		return m_zip_code;
 	}
-	public void setZip_code(java.lang.String v_zip_code)
+	public void setZip_code(String v_zip_code)
 	{
 		m_zip_code=v_zip_code;
 	}
 
-	public Set<Staffs> getStaffss()
+	public Set<Products> getProducts_via_stockss()
 	{
-		return m_staffss;
+		return m_products_via_stockss;
 	}
-	public void setStaffss(Set<Staffs> v_staffss)
+	public void setProducts_via_stockss(Set<Products> v_productss)
 	{
-		m_staffss=v_staffss;
+		m_products_via_stockss=v_productss;
 	}
-	public Set<Staffs> getStaffss()
+	public Set<Staffs> getStaffs_via_orderss()
 	{
-		return m_staffss;
+		return m_staffs_via_orderss;
 	}
-	public void setStaffss(Set<Staffs> v_staffss)
+	public void setStaffs_via_orderss(Set<Staffs> v_staffss)
 	{
-		m_staffss=v_staffss;
+		m_staffs_via_orderss=v_staffss;
 	}
-	public Set<Products> getProductss()
+	public Set<Staffs> getStaffs_via_staffss()
 	{
-		return m_productss;
+		return m_staffs_via_staffss;
 	}
-	public void setProductss(Set<Products> v_productss)
+	public void setStaffs_via_staffss(Set<Staffs> v_staffss)
 	{
-		m_productss=v_productss;
+		m_staffs_via_staffss=v_staffss;
 	}
-	public Set<Customers> getCustomerss()
+	public Set<Customers> getCustomers_via_orderss()
 	{
-		return m_customerss;
+		return m_customers_via_orderss;
 	}
-	public void setCustomerss(Set<Customers> v_customerss)
+	public void setCustomers_via_orderss(Set<Customers> v_customerss)
 	{
-		m_customerss=v_customerss;
+		m_customers_via_orderss=v_customerss;
 	}
 }

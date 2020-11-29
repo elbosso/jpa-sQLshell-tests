@@ -2,8 +2,8 @@ package de.elbosso.generated.sqlshell.bikestores;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "staffs"
@@ -15,14 +15,17 @@ import java.util.HashSet;
 public class Staffs
 {
 
-	@ManyToMany(mappedBy = "m_staffss")
-	private Set<Customers> m_customerss = new HashSet();
+//customers orders customer_id staff_id staffs 
+	@ManyToMany(mappedBy = "m_staffs_via_orderss")
+	private Set<Customers> m_customers_via_orderss = new HashSet();
 
-	@ManyToMany(mappedBy = "m_staffss")
-	private Set<Stores> m_storess = new HashSet();
+//stores orders store_id staff_id staffs 
+	@ManyToMany(mappedBy = "m_staffs_via_orderss")
+	private Set<Stores> m_stores_via_orderss = new HashSet();
 
-	@ManyToMany(mappedBy = "m_staffss")
-	private Set<Stores> m_storess = new HashSet();
+//stores staffs store_id manager_id staffs 
+	@ManyToMany(mappedBy = "m_staffs_via_staffss")
+	private Set<Stores> m_stores_via_staffss = new HashSet();
 
 	@OneToMany(mappedBy = "m_staffs", cascade = CascadeType.DETACH)
 	private Set<Orders> m_orderss = new HashSet();
@@ -39,7 +42,7 @@ public class Staffs
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_staff_id;
+	private Integer m_staff_id;
 
 	@NotNull
 	@Column(name = "first_name"
@@ -48,7 +51,7 @@ public class Staffs
 		, precision=50
 		, scale=0
 	)
-	private java.lang.String m_first_name;
+	private String m_first_name;
 
 	@NotNull
 	@Column(name = "last_name"
@@ -57,7 +60,7 @@ public class Staffs
 		, precision=50
 		, scale=0
 	)
-	private java.lang.String m_last_name;
+	private String m_last_name;
 
 	@NotNull
 	@Column(name = "email"
@@ -66,14 +69,14 @@ public class Staffs
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_email;
+	private String m_email;
 
 	@Column(name = "phone"
 		, length=25
 		, precision=25
 		, scale=0
 	)
-	private java.lang.String m_phone;
+	private String m_phone;
 
 	@NotNull
 	@Column(name = "active"
@@ -82,7 +85,7 @@ public class Staffs
 		, precision=3
 		, scale=0
 	)
-	private java.lang.Byte m_active;
+	private Byte m_active;
 
 	@ManyToOne
 	@JoinColumn(name = "store_id", referencedColumnName = "store_id",foreignKey=@ForeignKey(name="FK__staffs__store_id__4316F928", value=ConstraintMode.CONSTRAINT))
@@ -94,11 +97,11 @@ public class Staffs
 	private Staffs m_staffs;
 
 
-	public java.lang.Integer getStaff_id()
+	public Integer getStaff_id()
 	{
 		return m_staff_id;
 	}
-	public void setStaff_id(java.lang.Integer v_staff_id)
+	public void setStaff_id(Integer v_staff_id)
 	{
 		m_staff_id=v_staff_id;
 	}
@@ -118,43 +121,43 @@ public class Staffs
 	{
 		m_staffss=v_staffss;
 	}
-	public java.lang.String getFirst_name()
+	public String getFirst_name()
 	{
 		return m_first_name;
 	}
-	public void setFirst_name(java.lang.String v_first_name)
+	public void setFirst_name(String v_first_name)
 	{
 		m_first_name=v_first_name;
 	}
-	public java.lang.String getLast_name()
+	public String getLast_name()
 	{
 		return m_last_name;
 	}
-	public void setLast_name(java.lang.String v_last_name)
+	public void setLast_name(String v_last_name)
 	{
 		m_last_name=v_last_name;
 	}
-	public java.lang.String getEmail()
+	public String getEmail()
 	{
 		return m_email;
 	}
-	public void setEmail(java.lang.String v_email)
+	public void setEmail(String v_email)
 	{
 		m_email=v_email;
 	}
-	public java.lang.String getPhone()
+	public String getPhone()
 	{
 		return m_phone;
 	}
-	public void setPhone(java.lang.String v_phone)
+	public void setPhone(String v_phone)
 	{
 		m_phone=v_phone;
 	}
-	public java.lang.Byte getActive()
+	public Byte getActive()
 	{
 		return m_active;
 	}
-	public void setActive(java.lang.Byte v_active)
+	public void setActive(Byte v_active)
 	{
 		m_active=v_active;
 	}
@@ -175,28 +178,28 @@ public class Staffs
 		m_staffs=v_staffs;
 	}
 
-	public Set<Customers> getCustomerss()
+	public Set<Customers> getCustomers_via_orderss()
 	{
-		return m_customerss;
+		return m_customers_via_orderss;
 	}
-	public void setCustomerss(Set<Customers> v_customerss)
+	public void setCustomers_via_orderss(Set<Customers> v_customerss)
 	{
-		m_customerss=v_customerss;
+		m_customers_via_orderss=v_customerss;
 	}
-	public Set<Stores> getStoress()
+	public Set<Stores> getStores_via_orderss()
 	{
-		return m_storess;
+		return m_stores_via_orderss;
 	}
-	public void setStoress(Set<Stores> v_storess)
+	public void setStores_via_orderss(Set<Stores> v_storess)
 	{
-		m_storess=v_storess;
+		m_stores_via_orderss=v_storess;
 	}
-	public Set<Stores> getStoress()
+	public Set<Stores> getStores_via_staffss()
 	{
-		return m_storess;
+		return m_stores_via_staffss;
 	}
-	public void setStoress(Set<Stores> v_storess)
+	public void setStores_via_staffss(Set<Stores> v_storess)
 	{
-		m_storess=v_storess;
+		m_stores_via_staffss=v_storess;
 	}
 }

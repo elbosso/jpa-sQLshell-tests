@@ -26,7 +26,7 @@ public class Stocks
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_quantity;
+	private Integer m_quantity;
 
 	public Stores getStores()
 	{
@@ -44,11 +44,11 @@ public class Stocks
 	{
 		m_products=v_products;
 	}
-	public java.lang.Integer getQuantity()
+	public Integer getQuantity()
 	{
 		return m_quantity;
 	}
-	public void setQuantity(java.lang.Integer v_quantity)
+	public void setQuantity(Integer v_quantity)
 	{
 		m_quantity=v_quantity;
 	}

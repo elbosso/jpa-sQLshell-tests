@@ -2,8 +2,8 @@ package de.elbosso.generated.sqlshell.bikestores;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "brands"
@@ -19,7 +19,7 @@ public class Brands
 	  name = "products",
 	  joinColumns = @JoinColumn(name = "brand_id"),
 	  inverseJoinColumns = @JoinColumn(name = "category_id"))
-	private Set<Categories> m_categoriess = new HashSet();
+	private Set<Categories> m_categories_via_productss = new HashSet();
 
 	@OneToMany(mappedBy = "m_brands", cascade = CascadeType.DETACH)
 	private Set<Products> m_productss = new HashSet();
@@ -33,7 +33,7 @@ public class Brands
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_brand_id;
+	private Integer m_brand_id;
 
 	@NotNull
 	@Column(name = "brand_name"
@@ -42,13 +42,13 @@ public class Brands
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_brand_name;
+	private String m_brand_name;
 
-	public java.lang.Integer getBrand_id()
+	public Integer getBrand_id()
 	{
 		return m_brand_id;
 	}
-	public void setBrand_id(java.lang.Integer v_brand_id)
+	public void setBrand_id(Integer v_brand_id)
 	{
 		m_brand_id=v_brand_id;
 	}
@@ -60,21 +60,21 @@ public class Brands
 	{
 		m_productss=v_productss;
 	}
-	public java.lang.String getBrand_name()
+	public String getBrand_name()
 	{
 		return m_brand_name;
 	}
-	public void setBrand_name(java.lang.String v_brand_name)
+	public void setBrand_name(String v_brand_name)
 	{
 		m_brand_name=v_brand_name;
 	}
 
-	public Set<Categories> getCategoriess()
+	public Set<Categories> getCategories_via_productss()
 	{
-		return m_categoriess;
+		return m_categories_via_productss;
 	}
-	public void setCategoriess(Set<Categories> v_categoriess)
+	public void setCategories_via_productss(Set<Categories> v_categoriess)
 	{
-		m_categoriess=v_categoriess;
+		m_categories_via_productss=v_categoriess;
 	}
 }

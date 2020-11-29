@@ -2,8 +2,8 @@ package de.elbosso.generated.sqlshell.bikestores;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories"
@@ -14,8 +14,9 @@ import java.util.HashSet;
 public class Categories
 {
 
-	@ManyToMany(mappedBy = "m_categoriess")
-	private Set<Brands> m_brandss = new HashSet();
+//brands products brand_id category_id categories 
+	@ManyToMany(mappedBy = "m_categories_via_productss")
+	private Set<Brands> m_brands_via_productss = new HashSet();
 
 	@OneToMany(mappedBy = "m_categories", cascade = CascadeType.DETACH)
 	private Set<Products> m_productss = new HashSet();
@@ -29,7 +30,7 @@ public class Categories
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_category_id;
+	private Integer m_category_id;
 
 	@NotNull
 	@Column(name = "category_name"
@@ -38,13 +39,13 @@ public class Categories
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_category_name;
+	private String m_category_name;
 
-	public java.lang.Integer getCategory_id()
+	public Integer getCategory_id()
 	{
 		return m_category_id;
 	}
-	public void setCategory_id(java.lang.Integer v_category_id)
+	public void setCategory_id(Integer v_category_id)
 	{
 		m_category_id=v_category_id;
 	}
@@ -56,21 +57,21 @@ public class Categories
 	{
 		m_productss=v_productss;
 	}
-	public java.lang.String getCategory_name()
+	public String getCategory_name()
 	{
 		return m_category_name;
 	}
-	public void setCategory_name(java.lang.String v_category_name)
+	public void setCategory_name(String v_category_name)
 	{
 		m_category_name=v_category_name;
 	}
 
-	public Set<Brands> getBrandss()
+	public Set<Brands> getBrands_via_productss()
 	{
-		return m_brandss;
+		return m_brands_via_productss;
 	}
-	public void setBrandss(Set<Brands> v_brandss)
+	public void setBrands_via_productss(Set<Brands> v_brandss)
 	{
-		m_brandss=v_brandss;
+		m_brands_via_productss=v_brandss;
 	}
 }
