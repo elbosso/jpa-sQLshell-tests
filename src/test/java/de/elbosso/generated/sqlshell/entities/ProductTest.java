@@ -2,6 +2,7 @@ package de.elbosso.generated.sqlshell.entities;
 
 import de.elbosso.generated.sqlshell.entities.dao.DaoFactory;
 import de.elbosso.generated.sqlshell.entities.dao.ProductDao;
+import de.elbosso.generated.sqlshell.entities.dao.SupplierDao;
 import junit.framework.Assert;
 import org.junit.Test;
 import util.JpaDao;
@@ -11,7 +12,7 @@ public class ProductTest
 {
 	@Test
 	public void testPersist() {
-		JpaDao<Supplier> supplierDao=JpaDaoFactory.createDao(Supplier.class);
+		SupplierDao supplierDao=DaoFactory.createSupplierDao();
 		ProductDao productDao= DaoFactory.createProductDao();
 		try {
 

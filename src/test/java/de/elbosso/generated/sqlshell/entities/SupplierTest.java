@@ -1,5 +1,8 @@
 package de.elbosso.generated.sqlshell.entities;
 
+import de.elbosso.generated.sqlshell.entities.dao.DaoFactory;
+import de.elbosso.generated.sqlshell.entities.dao.SupplierDao;
+import de.elbosso.generated.sqlshell.entities.dao.TheorderDao;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -30,7 +33,7 @@ public class SupplierTest
 
 	@Test
 	public void testPersist() {
-		JpaDao<Supplier> supplierDao= JpaDaoFactory.createDao(Supplier.class);
+		SupplierDao supplierDao= DaoFactory.createSupplierDao();
 		try {
 
 			// Persist in database
@@ -47,6 +50,23 @@ public class SupplierTest
 
 		} catch (Throwable e) {
 			supplierDao.rollbackTransaction();
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+	@Test
+	public void testCountCustomers()
+	{
+		try {
+
+			SupplierDao supplierDao= DaoFactory.createSupplierDao();
+			supplierDao.beginTransaction();
+			Long number =  supplierDao. findNumberOfCustomers("Richter eG").orElse(null);
+			supplierDao.commitTransaction();
+			Assert.assertNotNull(number);
+			Assert.assertEquals(5l,number.longValue());
+
+		} catch (Throwable e) {
 			e.printStackTrace();
 			Assert.fail();
 		}

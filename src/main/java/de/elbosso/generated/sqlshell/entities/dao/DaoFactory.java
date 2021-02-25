@@ -2,6 +2,7 @@ package de.elbosso.generated.sqlshell.entities.dao;
 
 import de.elbosso.generated.sqlshell.entities.Orderitem;
 import de.elbosso.generated.sqlshell.entities.Product;
+import de.elbosso.generated.sqlshell.entities.Supplier;
 import de.elbosso.generated.sqlshell.entities.Theorder;
 import util.JpaDao;
 import util.JpaDaoFactory;
@@ -40,5 +41,19 @@ public class DaoFactory extends JpaDaoFactory
 			map.put(Theorder.class,theorderDao);
 		}
 		return (TheorderDao) map.get(Theorder.class);
+	}
+	public static SupplierDao createSupplierDao()
+	{
+		if(map.containsKey(Supplier.class)==false)
+		{
+			ensureEntityManagerFactory();
+			JpaDao<Supplier> supplierDao=new SupplierDao();
+			supplierDao.setEntityManager(emf.createEntityManager());
+			map.put(Supplier.class,supplierDao);
+		}
+		Object ref=map.get(Supplier.class);
+		boolean b=JpaDao.class.isAssignableFrom(SupplierDao.class);
+		SupplierDao rv=(SupplierDao) ref;
+		return rv;
 	}
 }
