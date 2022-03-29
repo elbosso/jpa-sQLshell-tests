@@ -24,17 +24,19 @@ public class Publication
 	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
 	private Set<Book> m_books = new HashSet();
 
-	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
+/*	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
 	private Set<Posting> m_postings = new HashSet();
-
+*/
 	@Id
 	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id"
 		, nullable = false
 		, updatable = false
 		, length=10
 		, precision=10
 		, scale=0
+			,insertable = false
 	)
 	private java.lang.Integer m_id;
 
@@ -76,7 +78,7 @@ public class Publication
 	{
 		m_books=v_books;
 	}
-	public Set<Posting> getPostings()
+/*	public Set<Posting> getPostings()
 	{
 		return m_postings;
 	}
@@ -84,7 +86,7 @@ public class Publication
 	{
 		m_postings=v_postings;
 	}
-	public java.sql.Timestamp getDate()
+*/	public java.sql.Timestamp getDate()
 	{
 		return m_date;
 	}

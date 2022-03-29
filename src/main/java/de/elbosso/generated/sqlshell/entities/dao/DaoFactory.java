@@ -7,8 +7,14 @@ import de.elbosso.generated.sqlshell.entities.Theorder;
 import util.JpaDao;
 import util.JpaDaoFactory;
 
+import javax.persistence.Persistence;
+
 public class DaoFactory extends JpaDaoFactory
 {
+	protected static void ensureEntityManagerFactory()
+	{
+		emf = Persistence.createEntityManagerFactory("pg-jpa");
+	}
 	public static ProductDao createProductDao()
 	{
 		if(map.containsKey(Product.class)==false)

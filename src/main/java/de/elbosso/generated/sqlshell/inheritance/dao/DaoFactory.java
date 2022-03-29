@@ -4,8 +4,15 @@ import de.elbosso.generated.sqlshell.inheritance.*;
 import util.JpaDao;
 import util.JpaDaoFactory;
 
+import javax.persistence.Persistence;
+
 public class DaoFactory extends JpaDaoFactory
 {
+	protected static void ensureEntityManagerFactory()
+	{
+		emf = Persistence.createEntityManagerFactory("inheritance-jpa");
+	}
+
 	public static AuthorDao createAuthorDao()
 	{
 		if(map.containsKey(Author.class)==false)
