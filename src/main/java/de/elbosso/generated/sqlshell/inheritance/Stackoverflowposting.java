@@ -16,7 +16,7 @@ extends Posting
 {
 
 	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id",foreignKey=@ForeignKey(name="stackoverflowposting_id_fkey", value=ConstraintMode.CONSTRAINT))
+	@JoinColumn(name = "soid", referencedColumnName = "id",foreignKey=@ForeignKey(name="stackoverflowposting_id_fkey", value=ConstraintMode.CONSTRAINT))
 	private Posting m_posting;
 
 

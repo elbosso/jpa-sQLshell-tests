@@ -1,6 +1,7 @@
 package de.elbosso.generated.sqlshell.inheritance;
 
 import de.elbosso.generated.sqlshell.inheritance.dao.AuthorDao;
+import de.elbosso.generated.sqlshell.inheritance.dao.BookDao;
 import de.elbosso.generated.sqlshell.inheritance.dao.DaoFactory;
 import junit.framework.Assert;
 import org.junit.Before;
@@ -32,17 +33,27 @@ public class BookTest
 	@Test
 	public void test() {
 		try {
+			BookDao bookDao= DaoFactory.createBookDao();
+			bookDao.beginTransaction();
+			Book book=new Book();
+			book.setIsbn("isbn");
+			book.setName("name");
+			bookDao.persist(book);
+			bookDao.commitTransaction();
+
 			AuthorDao authorDao= DaoFactory.createAuthorDao();
 			authorDao.beginTransaction();
 			Author author=new Author();
 			author.setName("Stanislaw Lem");
-			authorDao.persist(author);
-			author=new Author();
-			author.setName("Jules Verne");
+//			author.getPublication_via_authorpublicationmappings().add(book);
 			authorDao.persist(author);
 			authorDao.commitTransaction();
-//			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
+/*			bookDao.beginTransaction();
+			book.getAuthor_via_authorpublicationmappings().add(author);
+			bookDao.persist(book);
+			bookDao.commitTransaction();
+*/
 
 			authorDao.beginTransaction();
 			java.util.List<Author> authors=authorDao.findAll();

@@ -5,6 +5,11 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.HashSet;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Set;
+import java.util.HashSet;
+
 @Entity
 @Table(name = "book"
 /*	,indexes = {
@@ -12,18 +17,18 @@ import java.util.HashSet;
 	}*/
 )
 public class Book
-extends Publication
+		extends Publication
 {
 
 	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id",foreignKey=@ForeignKey(name="book_id_fkey", value=ConstraintMode.CONSTRAINT))
+	@JoinColumn(name = "bid", referencedColumnName = "id",foreignKey=@ForeignKey(name="book_id_fkey", value=ConstraintMode.CONSTRAINT))
 	private Publication m_publication;
 
 
 	@Column(name = "isbn"
-		, length=255
-		, precision=255
-		, scale=0
+			, length=255
+			, precision=255
+			, scale=0
 	)
 	private java.lang.String m_isbn;
 

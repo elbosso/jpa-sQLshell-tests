@@ -20,7 +20,7 @@ extends Publication
 	private Set<Stackoverflowposting> m_stackoverflowpostings = new HashSet();
 
 	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id",foreignKey=@ForeignKey(name="posting_id_fkey", value=ConstraintMode.CONSTRAINT))
+	@JoinColumn(name = "pid", referencedColumnName = "id",foreignKey=@ForeignKey(name="posting_id_fkey", value=ConstraintMode.CONSTRAINT))
 	private Publication m_publication;
 
 

@@ -21,12 +21,6 @@ public class Publication
 	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
 	private Set<Authorpublicationmapping> m_authorpublicationmappings = new HashSet();
 
-	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
-	private Set<Book> m_books = new HashSet();
-
-/*	@OneToMany(mappedBy = "m_publication", cascade = CascadeType.DETACH)
-	private Set<Posting> m_postings = new HashSet();
-*/
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,23 +64,7 @@ public class Publication
 	{
 		m_authorpublicationmappings=v_authorpublicationmappings;
 	}
-	public Set<Book> getBooks()
-	{
-		return m_books;
-	}
-	public void setBooks(Set<Book> v_books)
-	{
-		m_books=v_books;
-	}
-/*	public Set<Posting> getPostings()
-	{
-		return m_postings;
-	}
-	public void setPostings(Set<Posting> v_postings)
-	{
-		m_postings=v_postings;
-	}
-*/	public java.sql.Timestamp getDate()
+	public java.sql.Timestamp getDate()
 	{
 		return m_date;
 	}

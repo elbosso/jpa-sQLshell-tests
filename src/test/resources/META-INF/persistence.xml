@@ -66,8 +66,8 @@
 		<class>de.elbosso.generated.sqlshell.inheritance.Author</class>
 		<class>de.elbosso.generated.sqlshell.inheritance.Book</class>
 		<class>de.elbosso.generated.sqlshell.inheritance.Publication</class>
-		<!--class>de.elbosso.generated.sqlshell.inheritance.Posting</class>
-		<class>de.elbosso.generated.sqlshell.inheritance.Stackoverflowposting</class-->
+		<class>de.elbosso.generated.sqlshell.inheritance.Posting</class>
+		<class>de.elbosso.generated.sqlshell.inheritance.Stackoverflowposting</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://postgresqlserver.docker.lab:5432/jdbctest"/>
