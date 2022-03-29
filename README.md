@@ -51,3 +51,7 @@ in a HSQL database.
 
 ![Alt text](./src/main/java/de/elbosso/generated/sqlshell/entities/model.svg)
 
+package inheritance contains a datamodel meant for testing inheritance strategies in JPA
+
+![Alt text](./src/main/java/de/elbosso/generated/sqlshell/inheritance/model.svg)
+
