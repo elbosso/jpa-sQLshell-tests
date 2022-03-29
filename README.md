@@ -35,7 +35,8 @@ The most important things for me were:
 This project already contains some tests for some of the models I tested the plugin with. Over time, more and more tests 
 will be added here.
 
-So i sat down and tried my hand at it - with the results every one can see in this project. The generated Entities are below packega
+So i sat down and tried my hand at it - with the results everyone can see in this project. 
+The generated Entities are below package
 `de.elbosso.generated.sqlshell` - bikestores contains the result I got from a MS SQL example database:
 
 ![Alt text](./src/main/java/de/elbosso/generated/sqlshell/bikestores/model.svg)
