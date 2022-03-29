@@ -88,4 +88,25 @@ public class OrderitemTest
 			Assert.fail();
 		}
 	}
+	@Test
+	public void testPaging()
+	{
+		int start=0;
+		int howMany=10;
+		OrderitemDao orderitemDao = DaoFactory.createOrderitemDao();
+		orderitemDao.beginTransaction();
+		boolean cont=true;
+		while(cont)
+		{
+			java.util.List<Orderitem> ois=orderitemDao.returnPageQuantities(start,howMany).get();
+/*			for(Orderitem oi:ois)
+			{
+				System.out.println(oi.getId()+" "+oi.getProduct().getProductname());
+			}
+			System.out.println("----");
+*/			start+=ois.size();
+			cont=ois.isEmpty()==false;
+		}
+		orderitemDao.commitTransaction();
+	}
 }

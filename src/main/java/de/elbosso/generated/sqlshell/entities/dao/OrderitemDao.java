@@ -4,6 +4,7 @@ import de.elbosso.generated.sqlshell.entities.Orderitem;
 import util.JpaDao;
 
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
@@ -33,6 +34,17 @@ public class OrderitemDao extends JpaDao<Orderitem>
 		try {
 			return Optional.of(entityManager.createQuery("SELECT o FROM Orderitem o WHERE o.m_quantity = (SELECT max(o.m_quantity) FROM Orderitem o)", Orderitem.class)
 					.getResultList());
+		} catch (NoResultException e) {
+			return Optional.empty();
+		}
+	}
+	@Transactional
+	public Optional<java.util.List<Orderitem>> returnPageQuantities(int first,int howMany) {
+		try {
+			Query q=entityManager.createQuery("SELECT o FROM Orderitem o ORDER BY o.m_id", Orderitem.class);
+			q.setFirstResult(first);
+			q.setMaxResults(howMany);
+			return Optional.of(q.getResultList());
 		} catch (NoResultException e) {
 			return Optional.empty();
 		}
