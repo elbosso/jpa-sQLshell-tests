@@ -16,10 +16,10 @@ import java.util.HashSet;
 public class Product
 {
 
-	@ManyToMany(mappedBy = "m_products")
+	@ManyToMany(mappedBy = "m_products",fetch = FetchType.LAZY)
 	private Set<Theorder> m_theorders = new HashSet();
 
-	@OneToMany(mappedBy = "m_product", cascade = CascadeType.DETACH)
+	@OneToMany(mappedBy = "m_product", cascade = CascadeType.DETACH,fetch = FetchType.LAZY)
 	private Set<Orderitem> m_orderitems = new HashSet();
 
 	@Id

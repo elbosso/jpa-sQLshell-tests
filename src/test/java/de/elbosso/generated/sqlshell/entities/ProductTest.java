@@ -28,7 +28,6 @@ public class ProductTest
 			product.setSupplier(supplier);
 			product.setIsdiscontinued(Boolean.FALSE);
 			productDao.persist(product);
-			Product productDB =  productDao.find(product.getId()).get();
 			productDao.commitTransaction();
 
 			theorderDao.beginTransaction();
@@ -42,15 +41,27 @@ public class ProductTest
 			theorderDao.commitTransaction();
 
 			orderitemDao.beginTransaction();
-			java.util.List<Orderitem> orderitems=orderitemDao.findAllForProduct(productDB).orElse(java.util.Collections.emptyList());
+			java.util.List<Orderitem> orderitems=orderitemDao.findAllForProduct(product).orElse(java.util.Collections.emptyList());
 			orderitemDao.commitTransaction();
 
+			//this is needed to access the theorders and the orderitems!!
+//			productDao= DaoFactory.createNewProductDao();
+			//this is an alternative to actually get the references to the theorders and the orderitems!!
+			productDao.getEntityManager().refresh(product);
+/*			productDao.beginTransaction();
+			Product productDB =  productDao.find(product.getId()).get();
+			productDao.commitTransaction();
+*/			java.util.Set<Orderitem> orderitemsdb=product.getOrderitems();
+			java.util.Set<Theorder> theorders=product.getTheorders();
+
+			Assert.assertEquals(1,orderitemsdb.size());
 			Assert.assertEquals(1,orderitems.size());
-			Assert.assertNotNull(productDB);
-			Assert.assertEquals(product.getProductname(), productDB.getProductname());
+//			Assert.assertTrue(orderitems.iterator().next().equals(orderitemsdb.iterator().next()));
+//			Assert.assertNotNull(productDB);
+//			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
 		} catch (Throwable e) {
-			productDao.rollbackTransaction();
+//			productDao.rollbackTransaction();
 			e.printStackTrace();
 			Assert.fail();
 		}

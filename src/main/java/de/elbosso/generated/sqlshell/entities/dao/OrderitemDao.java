@@ -51,6 +51,11 @@ public class OrderitemDao extends JpaDao<Orderitem>
 		}
 	}
 	@Transactional
+	/**
+	 * This is terrible and should be done under no circumstances. It is only meant as a reminder
+	 * what the query would look like. In production just search the product and then access the orderitems via
+	 * the provided getter!
+	 */
 	public Optional<java.util.List<Orderitem>> findAllForProduct(Product product) {
 		try {
 			return Optional.of(entityManager.createQuery("SELECT o FROM Orderitem o JOIN o.m_product p WHERE p.id = :productid", Orderitem.class)
