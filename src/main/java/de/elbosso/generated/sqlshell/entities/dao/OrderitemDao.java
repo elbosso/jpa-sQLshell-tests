@@ -1,6 +1,7 @@
 package de.elbosso.generated.sqlshell.entities.dao;
 
 import de.elbosso.generated.sqlshell.entities.Orderitem;
+import de.elbosso.generated.sqlshell.entities.Product;
 import util.JpaDao;
 
 import javax.persistence.NoResultException;
@@ -45,6 +46,16 @@ public class OrderitemDao extends JpaDao<Orderitem>
 			q.setFirstResult(first);
 			q.setMaxResults(howMany);
 			return Optional.of(q.getResultList());
+		} catch (NoResultException e) {
+			return Optional.empty();
+		}
+	}
+	@Transactional
+	public Optional<java.util.List<Orderitem>> findAllForProduct(Product product) {
+		try {
+			return Optional.of(entityManager.createQuery("SELECT o FROM Orderitem o JOIN o.m_product p WHERE p.id = :productid", Orderitem.class)
+					.setParameter("productid", product.getId())
+					.getResultList());
 		} catch (NoResultException e) {
 			return Optional.empty();
 		}

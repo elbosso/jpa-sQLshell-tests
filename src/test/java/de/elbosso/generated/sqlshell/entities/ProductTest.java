@@ -1,19 +1,23 @@
 package de.elbosso.generated.sqlshell.entities;
 
-import de.elbosso.generated.sqlshell.entities.dao.DaoFactory;
-import de.elbosso.generated.sqlshell.entities.dao.ProductDao;
-import de.elbosso.generated.sqlshell.entities.dao.SupplierDao;
+import de.elbosso.generated.sqlshell.entities.dao.*;
 import junit.framework.Assert;
 import org.junit.Test;
 import util.JpaDao;
 import util.JpaDaoFactory;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 public class ProductTest
 {
 	@Test
 	public void testPersist() {
 		SupplierDao supplierDao=DaoFactory.createSupplierDao();
+		CustomerDao customerDao=DaoFactory.createCustomerDao();
 		ProductDao productDao= DaoFactory.createProductDao();
+		TheorderDao theorderDao=DaoFactory.createTheorderDao();
+		OrderitemDao orderitemDao=DaoFactory.createOrderitemDao();
 		try {
 
 			// Persist in database
@@ -26,6 +30,22 @@ public class ProductTest
 			productDao.persist(product);
 			Product productDB =  productDao.find(product.getId()).get();
 			productDao.commitTransaction();
+
+			theorderDao.beginTransaction();
+			Customer customer=customerDao.find(Integer.valueOf(-2147483647)).orElse(new Customer());
+			Theorder theorder=new Theorder();
+			theorder.setOrderdate(new Timestamp(new java.util.Date().getTime()));
+			theorder.setTotalamount(BigDecimal.valueOf(3.14));
+			theorder.setCustomer(customer);
+			theorder.getProducts().add(product);
+			theorderDao.persist(theorder);
+			theorderDao.commitTransaction();
+
+			orderitemDao.beginTransaction();
+			java.util.List<Orderitem> orderitems=orderitemDao.findAllForProduct(productDB).orElse(java.util.Collections.emptyList());
+			orderitemDao.commitTransaction();
+
+			Assert.assertEquals(1,orderitems.size());
 			Assert.assertNotNull(productDB);
 			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
