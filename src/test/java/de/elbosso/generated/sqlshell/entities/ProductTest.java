@@ -37,6 +37,11 @@ public class ProductTest
 			theorder.setTotalamount(BigDecimal.valueOf(3.14));
 			theorder.setCustomer(customer);
 			theorder.getProducts().add(product);
+			//you have to do that in order to get the references right
+			// on subsequent queries - another way would be to
+			//empty the cache of the entity manager or
+			//use a new entitymanager
+			productDao.getEntityManager().refresh(product);
 			theorderDao.persist(theorder);
 			theorderDao.commitTransaction();
 
@@ -47,18 +52,18 @@ public class ProductTest
 			//this is needed to access the theorders and the orderitems!!
 //			productDao= DaoFactory.createNewProductDao();
 			//this is an alternative to actually get the references to the theorders and the orderitems!!
-			productDao.getEntityManager().refresh(product);
+//			productDao.getEntityManager().refresh(product);
 /*			productDao.beginTransaction();
-			Product productDB =  productDao.find(product.getId()).get();
-			productDao.commitTransaction();
+*/			Product productDB =  productDao.find(product.getId()).get();
+/*			productDao.commitTransaction();
 */			java.util.Set<Orderitem> orderitemsdb=product.getOrderitems();
 			java.util.Set<Theorder> theorders=product.getTheorders();
 
 			Assert.assertEquals(1,orderitemsdb.size());
 			Assert.assertEquals(1,orderitems.size());
 //			Assert.assertTrue(orderitems.iterator().next().equals(orderitemsdb.iterator().next()));
-//			Assert.assertNotNull(productDB);
-//			Assert.assertEquals(product.getProductname(), productDB.getProductname());
+			Assert.assertNotNull(productDB);
+			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
 		} catch (Throwable e) {
 //			productDao.rollbackTransaction();
