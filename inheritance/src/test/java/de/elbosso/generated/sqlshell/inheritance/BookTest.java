@@ -1,39 +1,27 @@
 package de.elbosso.generated.sqlshell.inheritance;
 
 import de.elbosso.generated.sqlshell.inheritance.dao.AuthorDao;
-import de.elbosso.generated.sqlshell.inheritance.dao.BookDao;
 import de.elbosso.generated.sqlshell.inheritance.dao.DaoFactory;
 import junit.framework.Assert;
-import org.junit.Before;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.Collections;
-import java.util.List;
+import util.JpaDao;
 
 public class BookTest
 {
-	static EntityManagerFactory emf;
-	EntityManager em;
+	static DaoFactory df;
 
 	@BeforeClass
 	public static void setUp() throws ClassNotFoundException
 	{
-		emf = Persistence.createEntityManagerFactory("inheritance-jpa");
-	}
-
-	@Before
-	public void initEntityManager() {
-		em = emf.createEntityManager();
+		df=new DaoFactory("pg-jpa");
 	}
 
 	@Test
 	public void test() {
 		try {
-			BookDao bookDao= DaoFactory.createBookDao();
+			JpaDao<Book> bookDao= df.<Book>createDao(Book.class);
 			bookDao.beginTransaction();
 			Book book=new Book();
 			book.setIsbn("isbn");
@@ -41,7 +29,7 @@ public class BookTest
 			bookDao.persist(book);
 			bookDao.commitTransaction();
 
-			AuthorDao authorDao= DaoFactory.createAuthorDao();
+			AuthorDao authorDao= df.createAuthorDao();
 			authorDao.beginTransaction();
 			Author author=new Author();
 			author.setName("Stanislaw Lem");
@@ -64,5 +52,9 @@ public class BookTest
 			e.printStackTrace();
 			Assert.fail();
 		}
+	}
+	@AfterClass
+	public static void tearDown()
+	{
 	}
 }

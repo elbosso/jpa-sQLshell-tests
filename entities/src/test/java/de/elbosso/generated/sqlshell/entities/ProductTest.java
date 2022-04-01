@@ -2,6 +2,8 @@ package de.elbosso.generated.sqlshell.entities;
 
 import de.elbosso.generated.sqlshell.entities.dao.*;
 import junit.framework.Assert;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import util.JpaDao;
 import util.JpaDaoFactory;
@@ -11,13 +13,21 @@ import java.sql.Timestamp;
 
 public class ProductTest
 {
+	static DaoFactory df;
+
+	@BeforeClass
+	public static void setUp() throws ClassNotFoundException
+	{
+		df=new DaoFactory("pg-jpa");
+	}
+
 	@Test
 	public void testPersist() {
-		SupplierDao supplierDao=DaoFactory.createSupplierDao();
-		CustomerDao customerDao=DaoFactory.createCustomerDao();
-		ProductDao productDao= DaoFactory.createProductDao();
-		TheorderDao theorderDao=DaoFactory.createTheorderDao();
-		OrderitemDao orderitemDao=DaoFactory.createOrderitemDao();
+		SupplierDao supplierDao=df.createSupplierDao();
+		JpaDao<Customer> customerDao=df.<Customer>createDao(Customer.class);
+		ProductDao productDao= df.createProductDao();
+		TheorderDao theorderDao=df.createTheorderDao();
+		OrderitemDao orderitemDao=df.createOrderitemDao();
 		try {
 
 			// Persist in database
@@ -73,7 +83,7 @@ public class ProductTest
 	}
 	@Test
 	public void testFindByProductname() {
-		ProductDao productDao= DaoFactory.createProductDao();
+		ProductDao productDao= df.createProductDao();
 		try {
 
 			productDao.beginTransaction();
@@ -89,7 +99,7 @@ public class ProductTest
 	}
 	@Test
 	public void testOrders() {
-		ProductDao productDao= DaoFactory.createProductDao();
+		ProductDao productDao= df.createProductDao();
 		try {
 
 			productDao.beginTransaction();
@@ -102,4 +112,8 @@ public class ProductTest
 		}
 	}
 
+	@AfterClass
+	public static void tearDown()
+	{
+	}
 }
