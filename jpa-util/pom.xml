@@ -8,9 +8,9 @@
 		<groupId>de.elbosso.db</groupId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>bikestores</artifactId>
+	<artifactId>jpa-util</artifactId>
 
-	<name>jpa-sQLshell-tests</name>
+	<name>jpa-sQLshell-tests support project</name>
 	<url>https://github.com/elbosso/jpa-sQLshell-tests</url>
 
 	<properties>
@@ -58,11 +58,6 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>de.elbosso.db</groupId>
-			<artifactId>jpa-util</artifactId>
 		</dependency>
 
 	</dependencies>
