@@ -3,15 +3,23 @@ package de.elbosso.generated.sqlshell.entities;
 import de.elbosso.generated.sqlshell.entities.dao.DaoFactory;
 import de.elbosso.generated.sqlshell.entities.dao.TheorderDao;
 import junit.framework.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TheorderTest
 {
+	static DaoFactory df;
+
+	@BeforeClass
+	public static void setUp() throws ClassNotFoundException
+	{
+		df=new DaoFactory("pg-jpa");
+	}
 	@Test
 	public void testFindByOrdernumber() {
 		try {
 
-			TheorderDao theorderDao= DaoFactory.createTheorderDao();
+			TheorderDao theorderDao= df.createTheorderDao();
 			theorderDao.beginTransaction();
 			Theorder theorderDB =  theorderDao.findByOrdernumber("IL91237442").orElse(null);
 			theorderDao.commitTransaction();
@@ -26,7 +34,7 @@ public class TheorderTest
 	public void testOrders() {
 		try {
 
-			TheorderDao theorderDao= DaoFactory.createTheorderDao();
+			TheorderDao theorderDao= df.createTheorderDao();
 			theorderDao.beginTransaction();
 			Theorder theorderDB =  theorderDao.findByOrdernumber("LB9591223L").orElse(null);
 			theorderDao.commitTransaction();

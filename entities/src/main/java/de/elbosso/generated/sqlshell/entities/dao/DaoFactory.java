@@ -23,12 +23,6 @@ public class DaoFactory extends JpaDaoFactory
 		}
 		return (ProductDao) map.get(Product.class);
 	}
-	public ProductDao createNewProductDao()
-	{
-			ProductDao productDao=new ProductDao();
-			productDao.setEntityManager(emf.createEntityManager());
-			return productDao;
-	}
 	public OrderitemDao createOrderitemDao()
 	{
 		if(map.containsKey(Orderitem.class)==false)

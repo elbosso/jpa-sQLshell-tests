@@ -16,24 +16,17 @@ import javax.persistence.Persistence;
 
 public class SupplierTest
 {
-	static EntityManagerFactory emf;
-	EntityManager em;
+	static DaoFactory df;
 
 	@BeforeClass
 	public static void setUp() throws ClassNotFoundException
 	{
-//		emf = Persistence.createEntityManagerFactory("hsqldb-jpa");
-		emf = Persistence.createEntityManagerFactory("pg-jpa");
-	}
-
-	@Before
-	public void initEntityManager() {
-		em = emf.createEntityManager();
+		df=new DaoFactory("pg-jpa");
 	}
 
 	@Test
 	public void testPersist() {
-		SupplierDao supplierDao= DaoFactory.createSupplierDao();
+		SupplierDao supplierDao= df.createSupplierDao();
 		try {
 
 			// Persist in database
@@ -59,7 +52,7 @@ public class SupplierTest
 	{
 		try {
 
-			SupplierDao supplierDao= DaoFactory.createSupplierDao();
+			SupplierDao supplierDao= df.createSupplierDao();
 			supplierDao.beginTransaction();
 			Long number =  supplierDao. findNumberOfCustomers("Richter eG").orElse(null);
 			supplierDao.commitTransaction();

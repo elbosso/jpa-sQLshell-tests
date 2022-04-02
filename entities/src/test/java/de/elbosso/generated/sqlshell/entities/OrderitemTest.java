@@ -15,25 +15,18 @@ import java.util.List;
 
 public class OrderitemTest
 {
-	static EntityManagerFactory emf;
-	EntityManager em;
+	static DaoFactory df;
 
 	@BeforeClass
 	public static void setUp() throws ClassNotFoundException
 	{
-//		emf = Persistence.createEntityManagerFactory("hsqldb-jpa");
-		emf = Persistence.createEntityManagerFactory("pg-jpa");
-	}
-
-	@Before
-	public void initEntityManager() {
-		em = emf.createEntityManager();
+		df=new DaoFactory("pg-jpa");
 	}
 
 	@Test
 	public void testScarcity() {
 		try {
-			OrderitemDao orderitemDao= DaoFactory.createOrderitemDao();
+			OrderitemDao orderitemDao= df.createOrderitemDao();
 			orderitemDao.beginTransaction();
 			List<Orderitem> scarce20=  orderitemDao.findByScarcity(20).orElse(Collections.EMPTY_LIST);
 			List<Orderitem> scarce10=  orderitemDao.findByScarcity(10).orElse(Collections.EMPTY_LIST);
@@ -57,7 +50,7 @@ public class OrderitemTest
 	{
 		try
 		{
-			OrderitemDao orderitemDao = DaoFactory.createOrderitemDao();
+			OrderitemDao orderitemDao = df.createOrderitemDao();
 			orderitemDao.beginTransaction();
 			Integer max = orderitemDao.findMaxQuantity();
 			orderitemDao.commitTransaction();
@@ -72,7 +65,7 @@ public class OrderitemTest
 	{
 		try
 		{
-			OrderitemDao orderitemDao = DaoFactory.createOrderitemDao();
+			OrderitemDao orderitemDao = df.createOrderitemDao();
 			orderitemDao.beginTransaction();
 			Integer max = orderitemDao.findMaxQuantity();
 			orderitemDao.commitTransaction();
@@ -93,7 +86,7 @@ public class OrderitemTest
 	{
 		int start=0;
 		int howMany=10;
-		OrderitemDao orderitemDao = DaoFactory.createOrderitemDao();
+		OrderitemDao orderitemDao = df.createOrderitemDao();
 		orderitemDao.beginTransaction();
 		boolean cont=true;
 		while(cont)

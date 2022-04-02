@@ -5,6 +5,26 @@ Changelog of jpa-SQLshell-tests.
 ## Unreleased
 ### No issue
 
+**major restructuring**
+
+
+[980a8f839091f7c](https://github.com/elbosso/selfcontained_java_app_archetype/commit/980a8f839091f7c) Your Name *2022-04-01 08:44:49*
+
+**common utils split into separate module**
+
+
+[ef6ac0cf4b1ed0c](https://github.com/elbosso/selfcontained_java_app_archetype/commit/ef6ac0cf4b1ed0c) Your Name *2022-04-01 08:07:11*
+
+**housework...**
+
+
+[8df0288dc001f25](https://github.com/elbosso/selfcontained_java_app_archetype/commit/8df0288dc001f25) Juergen Key *2022-04-01 04:25:07*
+
+**changelog creation added**
+
+
+[9957b30e36568d8](https://github.com/elbosso/selfcontained_java_app_archetype/commit/9957b30e36568d8) Juergen Key *2022-04-01 04:24:30*
+
 **split into modules**
 
 

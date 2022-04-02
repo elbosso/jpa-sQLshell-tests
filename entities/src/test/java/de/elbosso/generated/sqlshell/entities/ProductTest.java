@@ -6,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import util.JpaDao;
-import util.JpaDaoFactory;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

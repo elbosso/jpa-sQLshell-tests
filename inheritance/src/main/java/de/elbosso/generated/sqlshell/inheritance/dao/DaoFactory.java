@@ -13,8 +13,4 @@ public class DaoFactory extends JpaDaoFactory
 		super(persistenceUnitName);
 	}
 
-	public AuthorDao createAuthorDao()
-	{
-		return (AuthorDao)<AuthorDao> super.createDao(Author.class);
-	}
 }

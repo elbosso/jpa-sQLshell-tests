@@ -64,4 +64,9 @@ public class JpaDao<T> {
 	{
 		entityManager.getTransaction().rollback();
 	}
+
+	public void refresh(T entity)
+	{
+		entityManager.refresh(entity);
+	}
 }

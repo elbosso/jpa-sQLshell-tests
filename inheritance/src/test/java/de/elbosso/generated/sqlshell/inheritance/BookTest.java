@@ -19,7 +19,7 @@ public class BookTest
 	}
 
 	@Test
-	public void test() {
+	public void testM2NRelationship() {
 		try {
 			JpaDao<Book> bookDao= df.<Book>createDao(Book.class);
 			bookDao.beginTransaction();
@@ -29,11 +29,11 @@ public class BookTest
 			bookDao.persist(book);
 			bookDao.commitTransaction();
 
-			AuthorDao authorDao= df.createAuthorDao();
+			JpaDao<Author> authorDao= df.<Author>createDao(Author.class);
 			authorDao.beginTransaction();
 			Author author=new Author();
 			author.setName("Stanislaw Lem");
-//			author.getPublication_via_authorpublicationmappings().add(book);
+			author.getPublication_via_authorpublicationmappings().add(book);
 			authorDao.persist(author);
 			authorDao.commitTransaction();
 
@@ -43,6 +43,9 @@ public class BookTest
 			bookDao.commitTransaction();
 */
 
+			Assert.assertEquals(0,book.getAuthor_via_authorpublicationmappings().size());
+			bookDao.refresh(book);
+			Assert.assertEquals(1,book.getAuthor_via_authorpublicationmappings().size());
 			authorDao.beginTransaction();
 			java.util.List<Author> authors=authorDao.findAll();
 			for(Author auth:authors)
