@@ -5,6 +5,16 @@ Changelog of jpa-SQLshell-tests.
 ## Unreleased
 ### No issue
 
+**testing of inheritance relationship done (well, satisfied my curiosity - it of cours is not a full test...)**
+
+
+[a5a80bd03be2eeb](https://github.com/elbosso/selfcontained_java_app_archetype/commit/a5a80bd03be2eeb) Juergen Key *2022-04-02 10:25:17*
+
+**refactoring/restructuring finished, log4j removed**
+
+
+[0ca96c7402aea9d](https://github.com/elbosso/selfcontained_java_app_archetype/commit/0ca96c7402aea9d) Juergen Key *2022-04-02 07:04:39*
+
 **major restructuring**
 
 

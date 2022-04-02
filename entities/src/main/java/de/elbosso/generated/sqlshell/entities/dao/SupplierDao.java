@@ -1,11 +1,10 @@
 package de.elbosso.generated.sqlshell.entities.dao;
 
 import de.elbosso.generated.sqlshell.entities.Supplier;
-import de.elbosso.generated.sqlshell.entities.Theorder;
+import javax.transaction.Transactional;
 import util.JpaDao;
 
 import javax.persistence.NoResultException;
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 public class SupplierDao extends JpaDao<Supplier>
