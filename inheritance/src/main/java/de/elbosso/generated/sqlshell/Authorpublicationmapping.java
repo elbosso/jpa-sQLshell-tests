@@ -27,12 +27,28 @@ public class Authorpublicationmapping
 	private Integer m_id;
 
 	@ManyToOne
-	@JoinColumn(/*name = "authorid",*/ referencedColumnName = "id",foreignKey=@ForeignKey(name="authorpublicationmapping_authorid_fkey", value=ConstraintMode.CONSTRAINT))
+	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
+	//authorid
+	//${childParentMappingColumn.get(tableDescription)}
+	//${childParentMappingColumn.get(tableDescription).name}
+	//${childParentMappingColumn.get(tableDescription).getName()}
+	@JoinColumn(name = "authorid"
+				, referencedColumnName = "id"
+,foreignKey=@ForeignKey(name="authorpublicationmapping_authorid_fkey"
+				, value=ConstraintMode.CONSTRAINT)	)
 	private Author m_author;
 
 
 	@ManyToOne
-	@JoinColumn(/*name = "publicationid",*/ referencedColumnName = "id",foreignKey=@ForeignKey(name="authorpublicationmapping_publicationid_fkey", value=ConstraintMode.CONSTRAINT))
+	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
+	//publicationid
+	//${childParentMappingColumn.get(tableDescription)}
+	//${childParentMappingColumn.get(tableDescription).name}
+	//${childParentMappingColumn.get(tableDescription).getName()}
+	@JoinColumn(name = "publicationid"
+				, referencedColumnName = "id"
+,foreignKey=@ForeignKey(name="authorpublicationmapping_publicationid_fkey"
+				, value=ConstraintMode.CONSTRAINT)	)
 	private Publication m_publication;
 
 

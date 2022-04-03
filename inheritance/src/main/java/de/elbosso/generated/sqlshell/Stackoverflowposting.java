@@ -16,7 +16,16 @@ extends Posting
 {
 
 	@ManyToOne
-	@JoinColumn(/*name = "id",*/ referencedColumnName = "id",foreignKey=@ForeignKey(name="stackoverflowposting_id_fkey", value=ConstraintMode.CONSTRAINT))
+	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
+	//id
+	//${childParentMappingColumn.get(tableDescription)}
+	//${childParentMappingColumn.get(tableDescription).name}
+	//${childParentMappingColumn.get(tableDescription).getName()}
+	@JoinColumn(name = "id"
+				, referencedColumnName = "id"
+,foreignKey=@ForeignKey(name="stackoverflowposting_id_fkey"
+				, value=ConstraintMode.CONSTRAINT), insertable = false
+				, updatable = false	)
 	private Posting m_posting;
 
 
