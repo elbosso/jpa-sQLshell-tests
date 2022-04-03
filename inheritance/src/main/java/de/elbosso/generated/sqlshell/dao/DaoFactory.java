@@ -1,0 +1,26 @@
+package de.elbosso.generated.sqlshell.dao;
+
+import de.elbosso.generated.sqlshell.Stackoverflowposting;
+import util.JpaDao;
+import util.JpaDaoFactory;
+
+public class DaoFactory extends JpaDaoFactory
+{
+
+	public DaoFactory(String persistenceUnitName)
+	{
+		super(persistenceUnitName);
+	}
+
+	public StackoverflowPostingDao createStackoverflowPostingDao()
+	{
+		if(map.containsKey(Stackoverflowposting.class)==false)
+		{
+			JpaDao<Stackoverflowposting> stackoverflowPostingDao=new StackoverflowPostingDao();
+			stackoverflowPostingDao.setEntityManager(emf.createEntityManager());
+			map.put(Stackoverflowposting.class,stackoverflowPostingDao);
+		}
+		return (StackoverflowPostingDao) map.get(Stackoverflowposting.class);
+	}
+
+}

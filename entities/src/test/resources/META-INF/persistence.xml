@@ -7,11 +7,11 @@
 	<persistence-unit name="pg-jpa" transaction-type="RESOURCE_LOCAL">
 		<!--provider>org.eclipse.persistence.jpa.PersistenceProvider</provider-->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>de.elbosso.generated.sqlshell.entities.Customer</class>
-		<class>de.elbosso.generated.sqlshell.entities.Orderitem</class>
-		<class>de.elbosso.generated.sqlshell.entities.Product</class>
-		<class>de.elbosso.generated.sqlshell.entities.Supplier</class>
-		<class>de.elbosso.generated.sqlshell.entities.Theorder</class>
+		<class>de.elbosso.generated.sqlshell.Customer</class>
+		<class>de.elbosso.generated.sqlshell.Orderitem</class>
+		<class>de.elbosso.generated.sqlshell.Product</class>
+		<class>de.elbosso.generated.sqlshell.Supplier</class>
+		<class>de.elbosso.generated.sqlshell.Theorder</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://postgresqlserver.docker.lab:5432/jdbctest"/>
