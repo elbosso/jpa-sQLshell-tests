@@ -37,12 +37,12 @@ will be added here.
 
 So i sat down and tried my hand at it - with the results everyone can see in this project. 
 The generated Entities are below package
-`de.elbosso.generated.sqlshell` - bikestores contains the result I got from a MS SQL example database:
+`de.elbosso.generated.sqlshell` - bikestores contains the result I got from a MS SQL [example database:](https://www.sqlservertutorial.net/sql-server-sample-database/)
 
 ![Alt text](./bikestores/src/main/java/de/elbosso/generated/sqlshell/bikestores/model.svg)
  
 chinook 
-contains the results i got from the example database for sqlite. 
+contains the results i got from the [example database](https://www.sqlitetutorial.net/sqlite-sample-database/) for sqlite. 
 
 ![Alt text](./chinook/src/main/java/de/elbosso/generated/sqlshell/chinook/model.svg)
 
