@@ -15,7 +15,7 @@
 
 
 I got the idea from a different repo https://github.com/josueribeiro/sqlite-jpa but it was horribly outdated (hibernate 3.5)
-abd did just not work so i set up my own. 
+and did just not work so i set up my own. 
 
 Why did i set up that project? Well, I wanted to test several tools that claimed to be able to build (JPA) Entity classes
 from an existimg datamodel (meaning from actual tables in a database). But it turned out - none of them could (out
