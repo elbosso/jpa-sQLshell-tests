@@ -37,21 +37,23 @@ will be added here.
 
 So i sat down and tried my hand at it - with the results everyone can see in this project. 
 The generated Entities are below package
-`de.elbosso.generated.sqlshell` - bikestores contains the result I got from a MS SQL [example database:](https://www.sqlservertutorial.net/sql-server-sample-database/)
+`de.elbosso.generated.sqlshell`.
+
+*bikestores* contains the result I got from a MS SQL [example database:](https://www.sqlservertutorial.net/sql-server-sample-database/)
 
 ![Alt text](./bikestores/src/main/java/de/elbosso/generated/sqlshell/bikestores/model.svg)
  
-chinook 
+*chinook* 
 contains the results i got from the [example database](https://www.sqlitetutorial.net/sqlite-sample-database/) for sqlite. 
 
 ![Alt text](./chinook/src/main/java/de/elbosso/generated/sqlshell/chinook/model.svg)
 
-package entities holds the results from an example 
+*entities* holds the results from an example 
 in a HSQL database.
 
 ![Alt text](./entities/src/main/java/de/elbosso/generated/sqlshell/model.svg)
 
-package inheritance contains a datamodel meant for testing inheritance strategies in JPA
+*inheritance* contains a datamodel meant for testing inheritance strategies in JPA (using HSQLDB - SQL for creating the model [is here](./inheritance/src/main/resources/model.sql)
 
 ![Alt text](./inheritance/src/main/java/de/elbosso/generated/sqlshell/model.svg)
 
