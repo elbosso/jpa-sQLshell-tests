@@ -49,7 +49,7 @@ contains the results i got from the [example database](https://www.sqlitetutoria
 ![Alt text](./chinook/src/main/java/de/elbosso/generated/sqlshell/chinook/model.svg)
 
 *entities* holds the results from an example 
-in a HSQL database.
+in a HSQL database sourced from [here](https://www.dofactory.com/sql/sample-database).
 
 ![Alt text](./entities/src/main/java/de/elbosso/generated/sqlshell/model.svg)
 
