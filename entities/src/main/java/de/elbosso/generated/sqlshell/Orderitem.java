@@ -15,6 +15,10 @@ import java.util.HashSet;
 )
 public class Orderitem
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,16 +30,22 @@ public class Orderitem
 		, precision=10
 		, scale=0
 	)
-	private Integer m_id;
+	private java.lang.Integer m_orderitem_id;
 
 	@ManyToOne
-	@JoinColumn(name = "orderid", referencedColumnName = "id",foreignKey=@ForeignKey(name="fk_orderite_reference_order", value=ConstraintMode.CONSTRAINT))
-	private Theorder m_theorder;
+	@JoinColumn(name = "orderid"
+				, referencedColumnName = "id"
+,foreignKey=@ForeignKey(name="fk_orderite_reference_order"
+				, value=ConstraintMode.CONSTRAINT)	)
+	private Theorder m_orderitem_theorder;
 
 
 	@ManyToOne
-	@JoinColumn(name = "productid", referencedColumnName = "id",foreignKey=@ForeignKey(name="fk_orderite_reference_product", value=ConstraintMode.CONSTRAINT))
-	private Product m_product;
+	@JoinColumn(name = "productid"
+				, referencedColumnName = "id"
+,foreignKey=@ForeignKey(name="fk_orderite_reference_product"
+				, value=ConstraintMode.CONSTRAINT)	)
+	private Product m_orderitem_product;
 
 
 	@NotNull
@@ -45,7 +55,7 @@ public class Orderitem
 		, precision=12
 		, scale=2
 	)
-	private java.math.BigDecimal m_unitprice;
+	private java.math.BigDecimal m_orderitem_unitprice;
 
 	@NotNull
 	@Column(name = "quantity"
@@ -54,47 +64,47 @@ public class Orderitem
 		, precision=10
 		, scale=0
 	)
-	private Integer m_quantity;
+	private java.lang.Integer m_orderitem_quantity;
 
-	public Integer getId()
+	public java.lang.Integer getId()
 	{
-		return m_id;
+		return m_orderitem_id;
 	}
-	public void setId(Integer v_id)
+	public void setId(java.lang.Integer v_id)
 	{
-		m_id=v_id;
+		m_orderitem_id=v_id;
 	}
 	public Theorder getTheorder()
 	{
-		return m_theorder;
+		return m_orderitem_theorder;
 	}
 	public void setTheorder(Theorder v_theorder)
 	{
-		m_theorder=v_theorder;
+		m_orderitem_theorder=v_theorder;
 	}
 	public Product getProduct()
 	{
-		return m_product;
+		return m_orderitem_product;
 	}
 	public void setProduct(Product v_product)
 	{
-		m_product=v_product;
+		m_orderitem_product=v_product;
 	}
 	public java.math.BigDecimal getUnitprice()
 	{
-		return m_unitprice;
+		return m_orderitem_unitprice;
 	}
 	public void setUnitprice(java.math.BigDecimal v_unitprice)
 	{
-		m_unitprice=v_unitprice;
+		m_orderitem_unitprice=v_unitprice;
 	}
-	public Integer getQuantity()
+	public java.lang.Integer getQuantity()
 	{
-		return m_quantity;
+		return m_orderitem_quantity;
 	}
-	public void setQuantity(Integer v_quantity)
+	public void setQuantity(java.lang.Integer v_quantity)
 	{
-		m_quantity=v_quantity;
+		m_orderitem_quantity=v_quantity;
 	}
 
 }

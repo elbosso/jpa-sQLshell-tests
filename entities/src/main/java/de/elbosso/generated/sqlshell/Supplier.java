@@ -15,9 +15,13 @@ import java.util.HashSet;
 )
 public class Supplier
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
-	@OneToMany(mappedBy = "m_supplier", cascade = CascadeType.DETACH)
-	private Set<Product> m_products = new HashSet();
+	@OneToMany(mappedBy = "m_product_supplier", cascade = CascadeType.DETACH)
+	private Set<Product> m_supplier_products = new HashSet();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +33,7 @@ public class Supplier
 		, precision=10
 		, scale=0
 	)
-	private Integer m_id;
+	private java.lang.Integer m_supplier_id;
 
 	@NotNull
 	@Column(name = "companyname"
@@ -38,121 +42,121 @@ public class Supplier
 		, precision=40
 		, scale=0
 	)
-	private String m_companyname;
+	private java.lang.String m_supplier_companyname;
 
 	@Column(name = "contactname"
 		, length=50
 		, precision=50
 		, scale=0
 	)
-	private String m_contactname;
+	private java.lang.String m_supplier_contactname;
 
 	@Column(name = "contacttitle"
 		, length=40
 		, precision=40
 		, scale=0
 	)
-	private String m_contacttitle;
+	private java.lang.String m_supplier_contacttitle;
 
 	@Column(name = "city"
 		, length=40
 		, precision=40
 		, scale=0
 	)
-	private String m_city;
+	private java.lang.String m_supplier_city;
 
 	@Column(name = "country"
 		, length=40
 		, precision=40
 		, scale=0
 	)
-	private String m_country;
+	private java.lang.String m_supplier_country;
 
 	@Column(name = "phone"
 		, length=30
 		, precision=30
 		, scale=0
 	)
-	private String m_phone;
+	private java.lang.String m_supplier_phone;
 
 	@Column(name = "fax"
 		, length=30
 		, precision=30
 		, scale=0
 	)
-	private String m_fax;
+	private java.lang.String m_supplier_fax;
 
-	public Integer getId()
+	public java.lang.Integer getId()
 	{
-		return m_id;
+		return m_supplier_id;
 	}
-	public void setId(Integer v_id)
+	public void setId(java.lang.Integer v_id)
 	{
-		m_id=v_id;
+		m_supplier_id=v_id;
 	}
 	public Set<Product> getProducts()
 	{
-		return m_products;
+		return m_supplier_products;
 	}
 	public void setProducts(Set<Product> v_products)
 	{
-		m_products=v_products;
+		m_supplier_products=v_products;
 	}
-	public String getCompanyname()
+	public java.lang.String getCompanyname()
 	{
-		return m_companyname;
+		return m_supplier_companyname;
 	}
-	public void setCompanyname(String v_companyname)
+	public void setCompanyname(java.lang.String v_companyname)
 	{
-		m_companyname=v_companyname;
+		m_supplier_companyname=v_companyname;
 	}
-	public String getContactname()
+	public java.lang.String getContactname()
 	{
-		return m_contactname;
+		return m_supplier_contactname;
 	}
-	public void setContactname(String v_contactname)
+	public void setContactname(java.lang.String v_contactname)
 	{
-		m_contactname=v_contactname;
+		m_supplier_contactname=v_contactname;
 	}
-	public String getContacttitle()
+	public java.lang.String getContacttitle()
 	{
-		return m_contacttitle;
+		return m_supplier_contacttitle;
 	}
-	public void setContacttitle(String v_contacttitle)
+	public void setContacttitle(java.lang.String v_contacttitle)
 	{
-		m_contacttitle=v_contacttitle;
+		m_supplier_contacttitle=v_contacttitle;
 	}
-	public String getCity()
+	public java.lang.String getCity()
 	{
-		return m_city;
+		return m_supplier_city;
 	}
-	public void setCity(String v_city)
+	public void setCity(java.lang.String v_city)
 	{
-		m_city=v_city;
+		m_supplier_city=v_city;
 	}
-	public String getCountry()
+	public java.lang.String getCountry()
 	{
-		return m_country;
+		return m_supplier_country;
 	}
-	public void setCountry(String v_country)
+	public void setCountry(java.lang.String v_country)
 	{
-		m_country=v_country;
+		m_supplier_country=v_country;
 	}
-	public String getPhone()
+	public java.lang.String getPhone()
 	{
-		return m_phone;
+		return m_supplier_phone;
 	}
-	public void setPhone(String v_phone)
+	public void setPhone(java.lang.String v_phone)
 	{
-		m_phone=v_phone;
+		m_supplier_phone=v_phone;
 	}
-	public String getFax()
+	public java.lang.String getFax()
 	{
-		return m_fax;
+		return m_supplier_fax;
 	}
-	public void setFax(String v_fax)
+	public void setFax(java.lang.String v_fax)
 	{
-		m_fax=v_fax;
+		m_supplier_fax=v_fax;
 	}
 
 }
