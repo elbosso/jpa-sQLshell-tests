@@ -14,19 +14,18 @@ import java.util.HashSet;
 public class Stackoverflowposting
 extends Posting
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@ManyToOne
-	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
-	//id
-	//${childParentMappingColumn.get(tableDescription)}
-	//${childParentMappingColumn.get(tableDescription).name}
-	//${childParentMappingColumn.get(tableDescription).getName()}
 	@JoinColumn(name = "id"
 				, referencedColumnName = "id"
 ,foreignKey=@ForeignKey(name="stackoverflowposting_id_fkey"
 				, value=ConstraintMode.CONSTRAINT), insertable = false
 				, updatable = false	)
-	private Posting m_posting;
+	private Posting m_stackoverflowposting_posting;
 
 
 	@Column(name = "permalink"
@@ -34,23 +33,23 @@ extends Posting
 		, precision=255
 		, scale=0
 	)
-	private String m_permalink;
+	private java.lang.String m_stackoverflowposting_permalink;
 
 	public Posting getPosting()
 	{
-		return m_posting;
+		return m_stackoverflowposting_posting;
 	}
 	public void setPosting(Posting v_posting)
 	{
-		m_posting=v_posting;
+		m_stackoverflowposting_posting=v_posting;
 	}
-	public String getPermalink()
+	public java.lang.String getPermalink()
 	{
-		return m_permalink;
+		return m_stackoverflowposting_permalink;
 	}
-	public void setPermalink(String v_permalink)
+	public void setPermalink(java.lang.String v_permalink)
 	{
-		m_permalink=v_permalink;
+		m_stackoverflowposting_permalink=v_permalink;
 	}
 
 }

@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,34 +16,35 @@ public class Playlists
 	  name = "playlist_track",
 	  joinColumns = @JoinColumn(name = "PlaylistId"),
 	  inverseJoinColumns = @JoinColumn(name = "TrackId"))
-	private Set<Tracks> m_trackss = new HashSet();
+	private Set<Tracks> m_tracks_via_playlist_tracks = new HashSet();
 
 	@OneToMany(mappedBy = "m_playlists", cascade = CascadeType.DETACH)
 	private Set<Playlist_track> m_playlist_tracks = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "PlaylistId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_PlaylistId;
+	private Integer m_PlaylistId;
 
 	@Column(name = "Name"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Name;
+	private String m_Name;
 
-	public java.lang.Integer getPlaylistId()
+	public Integer getPlaylistId()
 	{
 		return m_PlaylistId;
 	}
-	public void setPlaylistId(java.lang.Integer v_PlaylistId)
+	public void setPlaylistId(Integer v_PlaylistId)
 	{
 		m_PlaylistId=v_PlaylistId;
 	}
@@ -55,21 +56,21 @@ public class Playlists
 	{
 		m_playlist_tracks=v_playlist_tracks;
 	}
-	public java.lang.String getName()
+	public String getName()
 	{
 		return m_Name;
 	}
-	public void setName(java.lang.String v_Name)
+	public void setName(String v_Name)
 	{
 		m_Name=v_Name;
 	}
 
-	public Set<Tracks> getTrackss()
+	public Set<Tracks> getTracks_via_playlist_tracks()
 	{
-		return m_trackss;
+		return m_tracks_via_playlist_tracks;
 	}
-	public void setTrackss(Set<Tracks> v_trackss)
+	public void setTracks_via_playlist_tracks(Set<Tracks> v_trackss)
 	{
-		m_trackss=v_trackss;
+		m_tracks_via_playlist_tracks=v_trackss;
 	}
 }

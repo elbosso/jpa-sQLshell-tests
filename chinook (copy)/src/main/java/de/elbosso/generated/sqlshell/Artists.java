@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,28 +15,29 @@ public class Artists
 	private Set<Albums> m_albumss = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "ArtistId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_ArtistId;
+	private Integer m_ArtistId;
 
 	@Column(name = "Name"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Name;
+	private String m_Name;
 
-	public java.lang.Integer getArtistId()
+	public Integer getArtistId()
 	{
 		return m_ArtistId;
 	}
-	public void setArtistId(java.lang.Integer v_ArtistId)
+	public void setArtistId(Integer v_ArtistId)
 	{
 		m_ArtistId=v_ArtistId;
 	}
@@ -48,11 +49,11 @@ public class Artists
 	{
 		m_albumss=v_albumss;
 	}
-	public java.lang.String getName()
+	public String getName()
 	{
 		return m_Name;
 	}
-	public void setName(java.lang.String v_Name)
+	public void setName(String v_Name)
 	{
 		m_Name=v_Name;
 	}

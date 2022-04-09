@@ -39,7 +39,6 @@ public class OrderitemTest
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
 	}
 	@Test
@@ -54,7 +53,6 @@ public class OrderitemTest
 			Assert.assertEquals(10,max.intValue());
 		} catch (Throwable e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
 	}
 	@Test

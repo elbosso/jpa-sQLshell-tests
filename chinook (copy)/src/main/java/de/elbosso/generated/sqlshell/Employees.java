@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,22 +14,23 @@ import java.util.HashSet;
 public class Employees
 {
 
-	@OneToMany(mappedBy = "m_employees", cascade = CascadeType.DETACH)
+	@OneToMany(mappedBy = "m_cemployees", cascade = CascadeType.DETACH)
 	private Set<Customers> m_customerss = new HashSet();
 
 	@OneToMany(mappedBy = "m_employees", cascade = CascadeType.DETACH)
 	private Set<Employees> m_employeess = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "EmployeeId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_EmployeeId;
+	private Integer m_EmployeeId;
 
 	@NotNull
 	@Column(name = "LastName"
@@ -38,7 +39,7 @@ public class Employees
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_LastName;
+	private String m_LastName;
 
 	@NotNull
 	@Column(name = "FirstName"
@@ -47,17 +48,19 @@ public class Employees
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_FirstName;
+	private String m_FirstName;
 
 	@Column(name = "Title"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Title;
+	private String m_Title;
 
 	@ManyToOne
-	@JoinColumn(name = "ReportsTo", referencedColumnName = "EmployeeId")
+	@JoinColumn(name = "ReportsTo"
+				, referencedColumnName = "EmployeeId"
+	)
 	private Employees m_employees;
 
 
@@ -66,76 +69,76 @@ public class Employees
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BirthDate;
+	private String m_BirthDate;
 
 	@Column(name = "HireDate"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_HireDate;
+	private String m_HireDate;
 
 	@Column(name = "Address"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Address;
+	private String m_Address;
 
 	@Column(name = "City"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_City;
+	private String m_City;
 
 	@Column(name = "State"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_State;
+	private String m_State;
 
 	@Column(name = "Country"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Country;
+	private String m_Country;
 
 	@Column(name = "PostalCode"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_PostalCode;
+	private String m_PostalCode;
 
 	@Column(name = "Phone"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Phone;
+	private String m_Phone;
 
 	@Column(name = "Fax"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Fax;
+	private String m_Fax;
 
 	@Column(name = "Email"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Email;
+	private String m_Email;
 
-	public java.lang.Integer getEmployeeId()
+	public Integer getEmployeeId()
 	{
 		return m_EmployeeId;
 	}
-	public void setEmployeeId(java.lang.Integer v_EmployeeId)
+	public void setEmployeeId(Integer v_EmployeeId)
 	{
 		m_EmployeeId=v_EmployeeId;
 	}
@@ -155,27 +158,27 @@ public class Employees
 	{
 		m_employeess=v_employeess;
 	}
-	public java.lang.String getLastName()
+	public String getLastName()
 	{
 		return m_LastName;
 	}
-	public void setLastName(java.lang.String v_LastName)
+	public void setLastName(String v_LastName)
 	{
 		m_LastName=v_LastName;
 	}
-	public java.lang.String getFirstName()
+	public String getFirstName()
 	{
 		return m_FirstName;
 	}
-	public void setFirstName(java.lang.String v_FirstName)
+	public void setFirstName(String v_FirstName)
 	{
 		m_FirstName=v_FirstName;
 	}
-	public java.lang.String getTitle()
+	public String getTitle()
 	{
 		return m_Title;
 	}
-	public void setTitle(java.lang.String v_Title)
+	public void setTitle(String v_Title)
 	{
 		m_Title=v_Title;
 	}
@@ -187,83 +190,83 @@ public class Employees
 	{
 		m_employees=v_employees;
 	}
-	public java.lang.String getBirthDate()
+	public String getBirthDate()
 	{
 		return m_BirthDate;
 	}
-	public void setBirthDate(java.lang.String v_BirthDate)
+	public void setBirthDate(String v_BirthDate)
 	{
 		m_BirthDate=v_BirthDate;
 	}
-	public java.lang.String getHireDate()
+	public String getHireDate()
 	{
 		return m_HireDate;
 	}
-	public void setHireDate(java.lang.String v_HireDate)
+	public void setHireDate(String v_HireDate)
 	{
 		m_HireDate=v_HireDate;
 	}
-	public java.lang.String getAddress()
+	public String getAddress()
 	{
 		return m_Address;
 	}
-	public void setAddress(java.lang.String v_Address)
+	public void setAddress(String v_Address)
 	{
 		m_Address=v_Address;
 	}
-	public java.lang.String getCity()
+	public String getCity()
 	{
 		return m_City;
 	}
-	public void setCity(java.lang.String v_City)
+	public void setCity(String v_City)
 	{
 		m_City=v_City;
 	}
-	public java.lang.String getState()
+	public String getState()
 	{
 		return m_State;
 	}
-	public void setState(java.lang.String v_State)
+	public void setState(String v_State)
 	{
 		m_State=v_State;
 	}
-	public java.lang.String getCountry()
+	public String getCountry()
 	{
 		return m_Country;
 	}
-	public void setCountry(java.lang.String v_Country)
+	public void setCountry(String v_Country)
 	{
 		m_Country=v_Country;
 	}
-	public java.lang.String getPostalCode()
+	public String getPostalCode()
 	{
 		return m_PostalCode;
 	}
-	public void setPostalCode(java.lang.String v_PostalCode)
+	public void setPostalCode(String v_PostalCode)
 	{
 		m_PostalCode=v_PostalCode;
 	}
-	public java.lang.String getPhone()
+	public String getPhone()
 	{
 		return m_Phone;
 	}
-	public void setPhone(java.lang.String v_Phone)
+	public void setPhone(String v_Phone)
 	{
 		m_Phone=v_Phone;
 	}
-	public java.lang.String getFax()
+	public String getFax()
 	{
 		return m_Fax;
 	}
-	public void setFax(java.lang.String v_Fax)
+	public void setFax(String v_Fax)
 	{
 		m_Fax=v_Fax;
 	}
-	public java.lang.String getEmail()
+	public String getEmail()
 	{
 		return m_Email;
 	}
-	public void setEmail(java.lang.String v_Email)
+	public void setEmail(String v_Email)
 	{
 		m_Email=v_Email;
 	}

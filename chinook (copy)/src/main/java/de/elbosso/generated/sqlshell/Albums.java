@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,31 +16,32 @@ public class Albums
 
 	@ManyToMany
 	@JoinTable(
-	  name = "tracks",
+	  name = "media_types_via_tracks",
 	  joinColumns = @JoinColumn(name = "AlbumId"),
 	  inverseJoinColumns = @JoinColumn(name = "MediaTypeId"))
-	private Set<Media_types> m_media_typess = new HashSet();
+	private Set<Media_types> m_media_types_via_trackss = new HashSet();
 
 	@ManyToMany
 	@JoinTable(
-	  name = "tracks",
+	  name = "genres_via_tracks",
 	  joinColumns = @JoinColumn(name = "AlbumId"),
 	  inverseJoinColumns = @JoinColumn(name = "GenreId"))
-	private Set<Genres> m_genress = new HashSet();
+	private Set<Genres> m_genres_via_trackss = new HashSet();
 
 	@OneToMany(mappedBy = "m_albums", cascade = CascadeType.DETACH)
 	private Set<Tracks> m_trackss = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "AlbumId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_AlbumId;
+	private Integer m_AlbumId;
 
 	@NotNull
 	@Column(name = "Title"
@@ -49,18 +50,20 @@ public class Albums
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Title;
+	private String m_Title;
 
 	@ManyToOne
-	@JoinColumn(name = "ArtistId", referencedColumnName = "ArtistId")
+	@JoinColumn(name = "ArtistId"
+				, referencedColumnName = "ArtistId"
+	)
 	private Artists m_artists;
 
 
-	public java.lang.Integer getAlbumId()
+	public Integer getAlbumId()
 	{
 		return m_AlbumId;
 	}
-	public void setAlbumId(java.lang.Integer v_AlbumId)
+	public void setAlbumId(Integer v_AlbumId)
 	{
 		m_AlbumId=v_AlbumId;
 	}
@@ -72,11 +75,11 @@ public class Albums
 	{
 		m_trackss=v_trackss;
 	}
-	public java.lang.String getTitle()
+	public String getTitle()
 	{
 		return m_Title;
 	}
-	public void setTitle(java.lang.String v_Title)
+	public void setTitle(String v_Title)
 	{
 		m_Title=v_Title;
 	}
@@ -89,20 +92,20 @@ public class Albums
 		m_artists=v_artists;
 	}
 
-	public Set<Media_types> getMedia_typess()
+	public Set<Media_types> getMedia_types_via_trackss()
 	{
-		return m_media_typess;
+		return m_media_types_via_trackss;
 	}
-	public void setMedia_typess(Set<Media_types> v_media_typess)
+	public void setMedia_types_via_trackss(Set<Media_types> v_media_typess)
 	{
-		m_media_typess=v_media_typess;
+		m_media_types_via_trackss=v_media_typess;
 	}
-	public Set<Genres> getGenress()
+	public Set<Genres> getGenres_via_trackss()
 	{
-		return m_genress;
+		return m_genres_via_trackss;
 	}
-	public void setGenress(Set<Genres> v_genress)
+	public void setGenres_via_trackss(Set<Genres> v_genress)
 	{
-		m_genress=v_genress;
+		m_genres_via_trackss=v_genress;
 	}
 }

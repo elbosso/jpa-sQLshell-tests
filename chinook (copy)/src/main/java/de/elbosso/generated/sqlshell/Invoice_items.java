@@ -1,7 +1,9 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "invoice_items"
@@ -14,24 +16,29 @@ public class Invoice_items
 {
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "InvoiceLineId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_InvoiceLineId;
+	private Integer m_InvoiceLineId;
 
 	@ManyToOne
-	@JoinColumn(name = "InvoiceId", referencedColumnName = "InvoiceId")
+	@JoinColumn(name = "InvoiceId"
+				, referencedColumnName = "InvoiceId"
+	)
 	private Invoices m_invoices;
 
 
 	@ManyToOne
-	@JoinColumn(name = "TrackId", referencedColumnName = "TrackId")
-	private Tracks m_tracks;
+	@JoinColumn(name = "TrackId"
+				, referencedColumnName = "TrackId"
+	)
+	private Tracks m_iitracks;
 
 
 	@NotNull
@@ -41,7 +48,7 @@ public class Invoice_items
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Float m_UnitPrice;
+	private Float m_UnitPrice;
 
 	@NotNull
 	@Column(name = "Quantity"
@@ -50,13 +57,13 @@ public class Invoice_items
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_Quantity;
+	private Integer m_Quantity;
 
-	public java.lang.Integer getInvoiceLineId()
+	public Integer getInvoiceLineId()
 	{
 		return m_InvoiceLineId;
 	}
-	public void setInvoiceLineId(java.lang.Integer v_InvoiceLineId)
+	public void setInvoiceLineId(Integer v_InvoiceLineId)
 	{
 		m_InvoiceLineId=v_InvoiceLineId;
 	}
@@ -70,25 +77,25 @@ public class Invoice_items
 	}
 	public Tracks getTracks()
 	{
-		return m_tracks;
+		return m_iitracks;
 	}
 	public void setTracks(Tracks v_tracks)
 	{
-		m_tracks=v_tracks;
+		m_iitracks=v_tracks;
 	}
-	public java.lang.Float getUnitPrice()
+	public Float getUnitPrice()
 	{
 		return m_UnitPrice;
 	}
-	public void setUnitPrice(java.lang.Float v_UnitPrice)
+	public void setUnitPrice(Float v_UnitPrice)
 	{
 		m_UnitPrice=v_UnitPrice;
 	}
-	public java.lang.Integer getQuantity()
+	public Integer getQuantity()
 	{
 		return m_Quantity;
 	}
-	public void setQuantity(java.lang.Integer v_Quantity)
+	public void setQuantity(Integer v_Quantity)
 	{
 		m_Quantity=v_Quantity;
 	}

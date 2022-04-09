@@ -16,7 +16,7 @@ public class ProductDao extends JpaDao<Product>
 	@Transactional
 	public Optional<Product> findByProductname(String productname) {
 		try {
-			return Optional.of(entityManager.createQuery("SELECT p FROM Product p WHERE p.m_productname = :productname", Product.class)
+			return Optional.of(entityManager.createQuery("SELECT p FROM Product p WHERE p.m_product_productname = :productname", Product.class)
 					.setParameter("productname", productname)
 					.getSingleResult());
 		} catch (NoResultException e) {

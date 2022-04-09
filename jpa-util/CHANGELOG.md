@@ -5,6 +5,21 @@ Changelog of jpa-SQLshell-tests.
 ## Unreleased
 ### No issue
 
+**final tests of generation process inside sQLshell**
+
+
+[bb2badac799c2ef](https://github.com/elbosso/selfcontained_java_app_archetype/commit/bb2badac799c2ef) Juergen Key *2022-04-03 15:16:19*
+
+**refactoring**
+
+
+[faa71cc78e37c2c](https://github.com/elbosso/selfcontained_java_app_archetype/commit/faa71cc78e37c2c) Juergen Key *2022-04-03 13:01:25*
+
+**new versions for hibernate and postgres because I am still searchin for the cause of the problem that implicit insertion into a mapping table fails if this tables pk is not defined as having type serial**
+
+
+[278f1b7a98f0e0c](https://github.com/elbosso/selfcontained_java_app_archetype/commit/278f1b7a98f0e0c) Juergen Key *2022-04-02 15:57:53*
+
 **testing of inheritance relationship done (well, satisfied my curiosity - it of cours is not a full test...)**
 
 

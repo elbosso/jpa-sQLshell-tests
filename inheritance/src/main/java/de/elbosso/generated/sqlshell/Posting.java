@@ -15,22 +15,21 @@ import java.util.HashSet;
 public class Posting
 extends Publication
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
-	@OneToMany(mappedBy = "m_posting", cascade = CascadeType.DETACH)
-	private Set<Stackoverflowposting> m_stackoverflowpostings = new HashSet();
+	@OneToMany(mappedBy = "m_stackoverflowposting_posting", cascade = CascadeType.DETACH)
+	private Set<Stackoverflowposting> m_posting_stackoverflowpostings = new HashSet();
 
 	@ManyToOne
-	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
-	//id
-	//${childParentMappingColumn.get(tableDescription)}
-	//${childParentMappingColumn.get(tableDescription).name}
-	//${childParentMappingColumn.get(tableDescription).getName()}
 	@JoinColumn(name = "id"
 				, referencedColumnName = "id"
 ,foreignKey=@ForeignKey(name="posting_id_fkey"
 				, value=ConstraintMode.CONSTRAINT), insertable = false
 				, updatable = false	)
-	private Publication m_publication;
+	private Publication m_posting_publication;
 
 
 	@Column(name = "url"
@@ -38,31 +37,31 @@ extends Publication
 		, precision=255
 		, scale=0
 	)
-	private String m_url;
+	private java.lang.String m_posting_url;
 
 	public Publication getPublication()
 	{
-		return m_publication;
+		return m_posting_publication;
 	}
 	public void setPublication(Publication v_publication)
 	{
-		m_publication=v_publication;
+		m_posting_publication=v_publication;
 	}
 	public Set<Stackoverflowposting> getStackoverflowpostings()
 	{
-		return m_stackoverflowpostings;
+		return m_posting_stackoverflowpostings;
 	}
 	public void setStackoverflowpostings(Set<Stackoverflowposting> v_stackoverflowpostings)
 	{
-		m_stackoverflowpostings=v_stackoverflowpostings;
+		m_posting_stackoverflowpostings=v_stackoverflowpostings;
 	}
-	public String getUrl()
+	public java.lang.String getUrl()
 	{
-		return m_url;
+		return m_posting_url;
 	}
-	public void setUrl(String v_url)
+	public void setUrl(java.lang.String v_url)
 	{
-		m_url=v_url;
+		m_posting_url=v_url;
 	}
 
 }

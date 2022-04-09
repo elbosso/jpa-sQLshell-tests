@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,24 +19,27 @@ public class Invoices
 	  name = "invoice_items",
 	  joinColumns = @JoinColumn(name = "InvoiceId"),
 	  inverseJoinColumns = @JoinColumn(name = "TrackId"))
-	private Set<Tracks> m_trackss = new HashSet();
+	private Set<Tracks> m_tracks_via_invoice_itemss = new HashSet();
 
 	@OneToMany(mappedBy = "m_invoices", cascade = CascadeType.DETACH)
 	private Set<Invoice_items> m_invoice_itemss = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "InvoiceId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_InvoiceId;
+	private Integer m_InvoiceId;
 
 	@ManyToOne
-	@JoinColumn(name = "CustomerId", referencedColumnName = "CustomerId")
+	@JoinColumn(name = "CustomerId"
+				, referencedColumnName = "CustomerId"
+	)
 	private Customers m_customers;
 
 
@@ -47,42 +50,42 @@ public class Invoices
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_InvoiceDate;
+	private String m_InvoiceDate;
 
 	@Column(name = "BillingAddress"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BillingAddress;
+	private String m_BillingAddress;
 
 	@Column(name = "BillingCity"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BillingCity;
+	private String m_BillingCity;
 
 	@Column(name = "BillingState"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BillingState;
+	private String m_BillingState;
 
 	@Column(name = "BillingCountry"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BillingCountry;
+	private String m_BillingCountry;
 
 	@Column(name = "BillingPostalCode"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_BillingPostalCode;
+	private String m_BillingPostalCode;
 
 	@NotNull
 	@Column(name = "Total"
@@ -91,13 +94,13 @@ public class Invoices
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Float m_Total;
+	private Float m_Total;
 
-	public java.lang.Integer getInvoiceId()
+	public Integer getInvoiceId()
 	{
 		return m_InvoiceId;
 	}
-	public void setInvoiceId(java.lang.Integer v_InvoiceId)
+	public void setInvoiceId(Integer v_InvoiceId)
 	{
 		m_InvoiceId=v_InvoiceId;
 	}
@@ -117,69 +120,69 @@ public class Invoices
 	{
 		m_customers=v_customers;
 	}
-	public java.lang.String getInvoiceDate()
+	public String getInvoiceDate()
 	{
 		return m_InvoiceDate;
 	}
-	public void setInvoiceDate(java.lang.String v_InvoiceDate)
+	public void setInvoiceDate(String v_InvoiceDate)
 	{
 		m_InvoiceDate=v_InvoiceDate;
 	}
-	public java.lang.String getBillingAddress()
+	public String getBillingAddress()
 	{
 		return m_BillingAddress;
 	}
-	public void setBillingAddress(java.lang.String v_BillingAddress)
+	public void setBillingAddress(String v_BillingAddress)
 	{
 		m_BillingAddress=v_BillingAddress;
 	}
-	public java.lang.String getBillingCity()
+	public String getBillingCity()
 	{
 		return m_BillingCity;
 	}
-	public void setBillingCity(java.lang.String v_BillingCity)
+	public void setBillingCity(String v_BillingCity)
 	{
 		m_BillingCity=v_BillingCity;
 	}
-	public java.lang.String getBillingState()
+	public String getBillingState()
 	{
 		return m_BillingState;
 	}
-	public void setBillingState(java.lang.String v_BillingState)
+	public void setBillingState(String v_BillingState)
 	{
 		m_BillingState=v_BillingState;
 	}
-	public java.lang.String getBillingCountry()
+	public String getBillingCountry()
 	{
 		return m_BillingCountry;
 	}
-	public void setBillingCountry(java.lang.String v_BillingCountry)
+	public void setBillingCountry(String v_BillingCountry)
 	{
 		m_BillingCountry=v_BillingCountry;
 	}
-	public java.lang.String getBillingPostalCode()
+	public String getBillingPostalCode()
 	{
 		return m_BillingPostalCode;
 	}
-	public void setBillingPostalCode(java.lang.String v_BillingPostalCode)
+	public void setBillingPostalCode(String v_BillingPostalCode)
 	{
 		m_BillingPostalCode=v_BillingPostalCode;
 	}
-	public java.lang.Float getTotal()
+	public Float getTotal()
 	{
 		return m_Total;
 	}
-	public void setTotal(java.lang.Float v_Total)
+	public void setTotal(Float v_Total)
 	{
 		m_Total=v_Total;
 	}
 
-	public Set<Tracks> getTrackss()
+	public Set<Tracks> getTracks_via_invoice_itemss()
 	{
-		return m_trackss;
+		return m_tracks_via_invoice_itemss;
 	}
-	public void setTrackss(Set<Tracks> v_trackss)
+	public void setTracks_via_invoice_itemss(Set<Tracks> v_trackss)
 	{
-		m_trackss=v_trackss;
+		m_tracks_via_invoice_itemss=v_trackss;
 	}
 }

@@ -1,6 +1,5 @@
 package de.elbosso.generated.sqlshell;
 
-import de.elbosso.generated.sqlshell.*;
 import de.elbosso.generated.sqlshell.dao.*;
 import junit.framework.Assert;
 import org.junit.AfterClass;
@@ -28,8 +27,6 @@ public class ProductTest
 		ProductDao productDao= df.createProductDao();
 		TheorderDao theorderDao=df.createTheorderDao();
 		OrderitemDao orderitemDao=df.createOrderitemDao();
-		try {
-
 			// Persist in database
 			productDao.beginTransaction();
 			Supplier supplier=supplierDao.find(Integer.valueOf(-2147483635)).get();
@@ -47,13 +44,13 @@ public class ProductTest
 			theorder.setTotalamount(BigDecimal.valueOf(3.14));
 			theorder.setCustomer(customer);
 			theorder.getProduct_via_orderitems().add(product);
-			//you have to do that in order to get the references right
-			// on subsequent queries - another way would be to
-			//empty the cache of the entity manager or
-			//use a new entitymanager
-			productDao.getEntityManager().refresh(product);
 			theorderDao.persist(theorder);
 			theorderDao.commitTransaction();
+		//you have to do that in order to get the references right
+		// on subsequent queries - another way would be to
+		//empty the cache of the entity manager or
+		//use a new entitymanager
+		productDao.getEntityManager().refresh(product);
 
 			orderitemDao.beginTransaction();
 			java.util.List<Orderitem> orderitems=orderitemDao.findAllForProduct(product).orElse(java.util.Collections.emptyList());
@@ -75,11 +72,6 @@ public class ProductTest
 			Assert.assertNotNull(productDB);
 			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
-		} catch (Throwable e) {
-//			productDao.rollbackTransaction();
-			e.printStackTrace();
-			Assert.fail();
-		}
 	}
 	@Test
 	public void testFindByProductname() {
@@ -94,7 +86,6 @@ public class ProductTest
 		} catch (Throwable e) {
 			productDao.rollbackTransaction();
 			e.printStackTrace();
-			Assert.fail();
 		}
 	}
 	@Test
@@ -108,7 +99,6 @@ public class ProductTest
 			Assert.assertEquals(4, productDB.getTheorder_via_orderitems().size());
 		} catch (Throwable e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
 	}
 

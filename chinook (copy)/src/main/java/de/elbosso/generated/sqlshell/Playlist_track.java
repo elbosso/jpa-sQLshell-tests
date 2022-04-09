@@ -1,6 +1,9 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "playlist_track"
@@ -11,15 +14,22 @@ import javax.persistence.*;
 )
 public class Playlist_track
 {
+	@Id
+	@Column(name="ROWID")
+	private String id;
 
 	@ManyToOne
-	@JoinColumn(name = "PlaylistId", referencedColumnName = "PlaylistId")
+	@JoinColumn(name = "PlaylistId"
+				, referencedColumnName = "PlaylistId"
+	)
 	private Playlists m_playlists;
 
 
 	@ManyToOne
-	@JoinColumn(name = "TrackId", referencedColumnName = "TrackId")
-	private Tracks m_tracks;
+	@JoinColumn(name = "TrackId"
+				, referencedColumnName = "TrackId"
+	)
+	private Tracks m_ptracks;
 
 
 	public Playlists getPlaylists()
@@ -32,11 +42,11 @@ public class Playlist_track
 	}
 	public Tracks getTracks()
 	{
-		return m_tracks;
+		return m_ptracks;
 	}
 	public void setTracks(Tracks v_tracks)
 	{
-		m_tracks=v_tracks;
+		m_ptracks=v_tracks;
 	}
 
 }

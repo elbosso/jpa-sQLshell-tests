@@ -14,19 +14,18 @@ import java.util.HashSet;
 public class Book
 extends Publication
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@ManyToOne
-	//{public.stackoverflowposting=id, public.book=id, public.posting=id}
-	//id
-	//${childParentMappingColumn.get(tableDescription)}
-	//${childParentMappingColumn.get(tableDescription).name}
-	//${childParentMappingColumn.get(tableDescription).getName()}
 	@JoinColumn(name = "id"
 				, referencedColumnName = "id"
 ,foreignKey=@ForeignKey(name="book_id_fkey"
 				, value=ConstraintMode.CONSTRAINT), insertable = false
 				, updatable = false	)
-	private Publication m_publication;
+	private Publication m_book_publication;
 
 
 	@Column(name = "isbn"
@@ -34,23 +33,23 @@ extends Publication
 		, precision=255
 		, scale=0
 	)
-	private String m_isbn;
+	private java.lang.String m_book_isbn;
 
 	public Publication getPublication()
 	{
-		return m_publication;
+		return m_book_publication;
 	}
 	public void setPublication(Publication v_publication)
 	{
-		m_publication=v_publication;
+		m_book_publication=v_publication;
 	}
-	public String getIsbn()
+	public java.lang.String getIsbn()
 	{
-		return m_isbn;
+		return m_book_isbn;
 	}
-	public void setIsbn(String v_isbn)
+	public void setIsbn(java.lang.String v_isbn)
 	{
-		m_isbn=v_isbn;
+		m_book_isbn=v_isbn;
 	}
 
 }

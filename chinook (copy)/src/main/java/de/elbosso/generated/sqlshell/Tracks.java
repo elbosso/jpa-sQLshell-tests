@@ -1,4 +1,4 @@
-package de.elbosso.generated.sqlshell.chinook;
+package de.elbosso.generated.sqlshell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,28 +16,29 @@ import java.util.HashSet;
 public class Tracks
 {
 
-	@ManyToMany(mappedBy = "m_trackss")
-	private Set<Invoices> m_invoicess = new HashSet();
+	@ManyToMany(mappedBy = "m_tracks_via_invoice_itemss")
+	private Set<Invoices> m_invoices_via_invoice_itemss = new HashSet();
 
-	@ManyToMany(mappedBy = "m_trackss")
-	private Set<Playlists> m_playlistss = new HashSet();
+	@ManyToMany(mappedBy = "m_tracks_via_playlist_tracks")
+	private Set<Playlists> m_playlists_via_playlist_tracks = new HashSet();
 
-	@OneToMany(mappedBy = "m_tracks", cascade = CascadeType.DETACH)
+	@OneToMany(mappedBy = "m_iitracks", cascade = CascadeType.DETACH)
 	private Set<Invoice_items> m_invoice_itemss = new HashSet();
 
-	@OneToMany(mappedBy = "m_tracks", cascade = CascadeType.DETACH)
+	@OneToMany(mappedBy = "m_ptracks", cascade = CascadeType.DETACH)
 	private Set<Playlist_track> m_playlist_tracks = new HashSet();
 
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	@Column(name = "TrackId"
 		, nullable = false
+		, updatable = false
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_TrackId;
+	private Integer m_TrackId;
 
 	@NotNull
 	@Column(name = "Name"
@@ -46,20 +47,26 @@ public class Tracks
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Name;
+	private String m_Name;
 
 	@ManyToOne
-	@JoinColumn(name = "AlbumId", referencedColumnName = "AlbumId")
+	@JoinColumn(name = "AlbumId"
+				, referencedColumnName = "AlbumId"
+	)
 	private Albums m_albums;
 
 
 	@ManyToOne
-	@JoinColumn(name = "MediaTypeId", referencedColumnName = "MediaTypeId")
+	@JoinColumn(name = "MediaTypeId"
+				, referencedColumnName = "MediaTypeId"
+	)
 	private Media_types m_media_types;
 
 
 	@ManyToOne
-	@JoinColumn(name = "GenreId", referencedColumnName = "GenreId")
+	@JoinColumn(name = "GenreId"
+				, referencedColumnName = "GenreId"
+	)
 	private Genres m_genres;
 
 
@@ -68,7 +75,7 @@ public class Tracks
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.String m_Composer;
+	private String m_Composer;
 
 	@NotNull
 	@Column(name = "Milliseconds"
@@ -77,14 +84,14 @@ public class Tracks
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_Milliseconds;
+	private Integer m_Milliseconds;
 
 	@Column(name = "Bytes"
 		, length=2000000000
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Integer m_Bytes;
+	private Integer m_Bytes;
 
 	@NotNull
 	@Column(name = "UnitPrice"
@@ -93,13 +100,13 @@ public class Tracks
 		, precision=2000000000
 		, scale=10
 	)
-	private java.lang.Float m_UnitPrice;
+	private Float m_UnitPrice;
 
-	public java.lang.Integer getTrackId()
+	public Integer getTrackId()
 	{
 		return m_TrackId;
 	}
-	public void setTrackId(java.lang.Integer v_TrackId)
+	public void setTrackId(Integer v_TrackId)
 	{
 		m_TrackId=v_TrackId;
 	}
@@ -119,11 +126,11 @@ public class Tracks
 	{
 		m_playlist_tracks=v_playlist_tracks;
 	}
-	public java.lang.String getName()
+	public String getName()
 	{
 		return m_Name;
 	}
-	public void setName(java.lang.String v_Name)
+	public void setName(String v_Name)
 	{
 		m_Name=v_Name;
 	}
@@ -151,53 +158,53 @@ public class Tracks
 	{
 		m_genres=v_genres;
 	}
-	public java.lang.String getComposer()
+	public String getComposer()
 	{
 		return m_Composer;
 	}
-	public void setComposer(java.lang.String v_Composer)
+	public void setComposer(String v_Composer)
 	{
 		m_Composer=v_Composer;
 	}
-	public java.lang.Integer getMilliseconds()
+	public Integer getMilliseconds()
 	{
 		return m_Milliseconds;
 	}
-	public void setMilliseconds(java.lang.Integer v_Milliseconds)
+	public void setMilliseconds(Integer v_Milliseconds)
 	{
 		m_Milliseconds=v_Milliseconds;
 	}
-	public java.lang.Integer getBytes()
+	public Integer getBytes()
 	{
 		return m_Bytes;
 	}
-	public void setBytes(java.lang.Integer v_Bytes)
+	public void setBytes(Integer v_Bytes)
 	{
 		m_Bytes=v_Bytes;
 	}
-	public java.lang.Float getUnitPrice()
+	public Float getUnitPrice()
 	{
 		return m_UnitPrice;
 	}
-	public void setUnitPrice(java.lang.Float v_UnitPrice)
+	public void setUnitPrice(Float v_UnitPrice)
 	{
 		m_UnitPrice=v_UnitPrice;
 	}
 
-	public Set<Invoices> getInvoicess()
+	public Set<Invoices> getInvoices_via_invoice_itemss()
 	{
-		return m_invoicess;
+		return m_invoices_via_invoice_itemss;
 	}
-	public void setInvoicess(Set<Invoices> v_invoicess)
+	public void setInvoices_via_invoice_itemss(Set<Invoices> v_invoicess)
 	{
-		m_invoicess=v_invoicess;
+		m_invoices_via_invoice_itemss=v_invoicess;
 	}
-	public Set<Playlists> getPlaylistss()
+	public Set<Playlists> getPlaylists_via_playlist_tracks()
 	{
-		return m_playlistss;
+		return m_playlists_via_playlist_tracks;
 	}
-	public void setPlaylistss(Set<Playlists> v_playlistss)
+	public void setPlaylists_via_playlist_tracks(Set<Playlists> v_playlistss)
 	{
-		m_playlistss=v_playlistss;
+		m_playlists_via_playlist_tracks=v_playlistss;
 	}
 }
