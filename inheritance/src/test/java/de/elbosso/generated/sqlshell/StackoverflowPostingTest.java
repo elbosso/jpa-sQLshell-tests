@@ -3,6 +3,8 @@ package de.elbosso.generated.sqlshell;
 import de.elbosso.generated.sqlshell.Author;
 import de.elbosso.generated.sqlshell.Book;
 import de.elbosso.generated.sqlshell.Stackoverflowposting;
+import de.elbosso.generated.sqlshell.dao.AuthorDao;
+import de.elbosso.generated.sqlshell.dao.AuthorpublicationmappingDao;
 import de.elbosso.generated.sqlshell.dao.DaoFactory;
 import de.elbosso.generated.sqlshell.dao.StackoverflowPostingDao;
 import junit.framework.Assert;
@@ -10,6 +12,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import util.JpaDao;
+
+import java.util.List;
 
 public class StackoverflowPostingTest
 {
@@ -45,36 +49,35 @@ public class StackoverflowPostingTest
 		stackoverflowPostingDao.persist(stackoverflowposting1);
 		stackoverflowPostingDao.commitTransaction();
 
-		JpaDao<Author> authorDao= df.<Author>createDao(Author.class);
+		AuthorDao authorDao= df.createAuthorDao();
 		authorDao.beginTransaction();
 		Author author=new Author();
 		author.setName("Stanislaw Lem");
-//		author.getPublication_via_authorpublicationmappings().add(stackoverflowposting);
-//		author.getPublication_via_authorpublicationmappings().add(book);
 		authorDao.persist(author);
+
 		Author author1=new Author();
 		author1.setName("Jules Verne");
-//		author1.getPublication_via_authorpublicationmappings().add(stackoverflowposting1);
-//		author1.getPublication_via_authorpublicationmappings().add(book);
 		authorDao.persist(author1);
 		authorDao.commitTransaction();
 
-//		Assert.assertEquals(0,stackoverflowposting.getAuthor_via_authorpublicationmappings().size());
-		stackoverflowPostingDao.refresh(stackoverflowposting);
+		AuthorpublicationmappingDao authorpublicationmappingDao=df.createAuthorpublicationmappingDao();
+		Authorpublicationmapping authorpublicationmapping=authorpublicationmappingDao.associateAndPersist(book,author);
+		authorpublicationmapping=authorpublicationmappingDao.associateAndPersist(stackoverflowposting,author);
+		authorpublicationmapping=authorpublicationmappingDao.associateAndPersist(book,author1);
+		authorpublicationmapping=authorpublicationmappingDao.associateAndPersist(stackoverflowposting1,author1);
+
+		List<Book> books=authorDao.findAllBooksForAuthor(author).orElseThrow();
 //		Assert.assertEquals(1,stackoverflowposting.getAuthor_via_authorpublicationmappings().size());
 
-//		Assert.assertEquals(0,book.getAuthor_via_authorpublicationmappings().size());
-		bookDao.refresh(book);
-//		Assert.assertEquals(2,book.getAuthor_via_authorpublicationmappings().size());
+		List<Posting> postings=authorDao.findAllPostingsForAuthor(author).orElseThrow();
+		Assert.assertEquals(1,postings.size());
+
+		List<Publication> publications=authorDao.findAllPublicationsForAuthor(author).orElseThrow();
+		Assert.assertEquals(2,publications.size());
 
 //		java.util.Collection<Stackoverflowposting> stackoverflowpostings=stackoverflowPostingDao.findAllForAuthor(author).orElse(java.util.Collections.emptyList());
 
 
-		authorDao.beginTransaction();
-		java.util.List<Author> authors=authorDao.findAll();
-		for(Author auth:authors)
-			authorDao.remove(auth);
-		authorDao.commitTransaction();
 	}
 	@AfterClass
 	public static void tearDown()

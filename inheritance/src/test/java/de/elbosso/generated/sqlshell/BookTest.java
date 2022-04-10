@@ -2,12 +2,16 @@ package de.elbosso.generated.sqlshell;
 
 import de.elbosso.generated.sqlshell.Author;
 import de.elbosso.generated.sqlshell.Book;
+import de.elbosso.generated.sqlshell.dao.AuthorDao;
+import de.elbosso.generated.sqlshell.dao.AuthorpublicationmappingDao;
 import de.elbosso.generated.sqlshell.dao.DaoFactory;
-import junit.framework.Assert;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import util.JpaDao;
+
+import java.util.List;
 
 public class BookTest
 {
@@ -29,28 +33,25 @@ public class BookTest
 		bookDao.persist(book);
 		bookDao.commitTransaction();
 
-		JpaDao<Author> authorDao= df.<Author>createDao(Author.class);
+		AuthorDao authorDao= df.createAuthorDao();
 		authorDao.beginTransaction();
 		Author author=new Author();
 		author.setName("Stanislaw Lem");
-
-//		author.getAuthorpublicationmappings()..add(book);
 		authorDao.persist(author);
 		authorDao.commitTransaction();
 
-/*			bookDao.beginTransaction();
-		book.getAuthor_via_authorpublicationmappings().add(author);
-		bookDao.persist(book);
-		bookDao.commitTransaction();
-*/
+		AuthorpublicationmappingDao authorpublicationmappingDao=df.createAuthorpublicationmappingDao();
+		Authorpublicationmapping authorpublicationmapping=authorpublicationmappingDao.associate(book,author);
+		authorpublicationmappingDao.beginTransaction();
+		authorpublicationmappingDao.persist(authorpublicationmapping);
+		authorpublicationmappingDao.commitTransaction();
 
-//		Assert.assertEquals(0,book.getAuthor_via_authorpublicationmappings().size());
-		bookDao.refresh(book);
-//		Assert.assertEquals(1,book.getAuthor_via_authorpublicationmappings().size());
+
 		authorDao.beginTransaction();
-		java.util.List<Author> authors=authorDao.findAll();
-		for(Author auth:authors)
-			authorDao.remove(auth);
+		List<Book> books=authorDao.findAllBooksForAuthor(author).orElseThrow();
+		Assert.assertEquals(1,books.size());
+
+
 		authorDao.commitTransaction();
 	}
 	@AfterClass
