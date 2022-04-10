@@ -10,13 +10,10 @@ import java.util.HashSet;
 )
 public class Genres
 {
-
-	@ManyToMany(mappedBy = "m_genres_via_trackss")
-	private Set<Albums> m_albums_via_trackss = new HashSet();
-
-	@ManyToMany(mappedBy = "m_genres_via_trackss")
-	private Set<Media_types> m_media_types_via_trackss = new HashSet();
-
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 	@OneToMany(mappedBy = "m_tracks_genres", cascade = CascadeType.DETACH)
 	private Set<Tracks> m_genres_trackss = new HashSet();
 
@@ -39,6 +36,7 @@ public class Genres
 	)
 	private String m_genres_Name;
 
+//GenreId
 	public Integer getGenreId()
 	{
 		return m_genres_GenreId;
@@ -47,6 +45,7 @@ public class Genres
 	{
 		m_genres_GenreId=v_GenreId;
 	}
+//it is an export
 	public Set<Tracks> getTrackss()
 	{
 		return m_genres_trackss;
@@ -55,6 +54,7 @@ public class Genres
 	{
 		m_genres_trackss=v_trackss;
 	}
+//Name
 	public String getName()
 	{
 		return m_genres_Name;
@@ -64,20 +64,6 @@ public class Genres
 		m_genres_Name=v_Name;
 	}
 
-	public Set<Albums> getAlbums_via_trackss()
-	{
-		return m_albums_via_trackss;
-	}
-	public void setAlbums_via_trackss(Set<Albums> v_albumss)
-	{
-		m_albums_via_trackss=v_albumss;
-	}
-	public Set<Media_types> getMedia_types_via_trackss()
-	{
-		return m_media_types_via_trackss;
-	}
-	public void setMedia_types_via_trackss(Set<Media_types> v_media_typess)
-	{
-		m_media_types_via_trackss=v_media_typess;
-	}
+//public Set<Albums> getAlbums_via_trackss()
+//public Set<Media_types> getMedia_types_via_trackss()
 }

@@ -13,13 +13,10 @@ import java.util.HashSet;
 )
 public class Invoices
 {
-
-	@ManyToMany
-	@JoinTable(
-	  name = "tracks_invoice_items",
-	  joinColumns = @JoinColumn(name = "InvoiceId"),
-	  inverseJoinColumns = @JoinColumn(name = "TrackId"))
-	private Set<Tracks> m_tracks_via_invoice_itemss = new HashSet();
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@OneToMany(mappedBy = "m_invoice_items_invoices", cascade = CascadeType.DETACH)
 	private Set<Invoice_items> m_invoices_invoice_itemss = new HashSet();
@@ -96,6 +93,7 @@ public class Invoices
 	)
 	private Float m_invoices_Total;
 
+//InvoiceId
 	public Integer getInvoiceId()
 	{
 		return m_invoices_InvoiceId;
@@ -104,6 +102,7 @@ public class Invoices
 	{
 		m_invoices_InvoiceId=v_InvoiceId;
 	}
+//it is an export
 	public Set<Invoice_items> getInvoice_itemss()
 	{
 		return m_invoices_invoice_itemss;
@@ -112,6 +111,8 @@ public class Invoices
 	{
 		m_invoices_invoice_itemss=v_invoice_itemss;
 	}
+//CustomerId
+//it is a reference
 	public Customers getCustomers()
 	{
 		return m_invoices_customers;
@@ -120,6 +121,7 @@ public class Invoices
 	{
 		m_invoices_customers=v_customers;
 	}
+//InvoiceDate
 	public String getInvoiceDate()
 	{
 		return m_invoices_InvoiceDate;
@@ -128,6 +130,7 @@ public class Invoices
 	{
 		m_invoices_InvoiceDate=v_InvoiceDate;
 	}
+//BillingAddress
 	public String getBillingAddress()
 	{
 		return m_invoices_BillingAddress;
@@ -136,6 +139,7 @@ public class Invoices
 	{
 		m_invoices_BillingAddress=v_BillingAddress;
 	}
+//BillingCity
 	public String getBillingCity()
 	{
 		return m_invoices_BillingCity;
@@ -144,6 +148,7 @@ public class Invoices
 	{
 		m_invoices_BillingCity=v_BillingCity;
 	}
+//BillingState
 	public String getBillingState()
 	{
 		return m_invoices_BillingState;
@@ -152,6 +157,7 @@ public class Invoices
 	{
 		m_invoices_BillingState=v_BillingState;
 	}
+//BillingCountry
 	public String getBillingCountry()
 	{
 		return m_invoices_BillingCountry;
@@ -160,6 +166,7 @@ public class Invoices
 	{
 		m_invoices_BillingCountry=v_BillingCountry;
 	}
+//BillingPostalCode
 	public String getBillingPostalCode()
 	{
 		return m_invoices_BillingPostalCode;
@@ -168,6 +175,7 @@ public class Invoices
 	{
 		m_invoices_BillingPostalCode=v_BillingPostalCode;
 	}
+//Total
 	public Float getTotal()
 	{
 		return m_invoices_Total;
@@ -177,12 +185,5 @@ public class Invoices
 		m_invoices_Total=v_Total;
 	}
 
-	public Set<Tracks> getTracks_via_invoice_itemss()
-	{
-		return m_tracks_via_invoice_itemss;
-	}
-	public void setTracks_via_invoice_itemss(Set<Tracks> v_trackss)
-	{
-		m_tracks_via_invoice_itemss=v_trackss;
-	}
+//public Set<Tracks> getTracks_via_invoice_itemss()
 }

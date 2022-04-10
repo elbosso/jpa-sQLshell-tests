@@ -20,41 +20,26 @@ public class SupplierTest
 	@Test
 	public void testPersist() {
 		SupplierDao supplierDao= df.createSupplierDao();
-		try {
-
-			// Persist in database
-			supplierDao.beginTransaction();
-			Supplier supplier=new Supplier();
-			supplier.setCompanyname("Company1");
-			supplier.setContactname("Contact1");
-			supplier.setCountry("DE");
-			supplierDao.persist(supplier);
-			Supplier supplierDB =  supplierDao.find(supplier.getId()).get();
-			supplierDao.commitTransaction();
-			Assert.assertNotNull(supplierDao);
-			Assert.assertEquals(supplier.getCompanyname(), supplierDB.getCompanyname());
-
-		} catch (Throwable e) {
-			supplierDao.rollbackTransaction();
-			e.printStackTrace();
-			Assert.fail();
-		}
+		// Persist in database
+		supplierDao.beginTransaction();
+		Supplier supplier=new Supplier();
+		supplier.setCompanyname("Company1");
+		supplier.setContactname("Contact1");
+		supplier.setCountry("DE");
+		supplierDao.persist(supplier);
+		Supplier supplierDB =  supplierDao.find(supplier.getId()).get();
+		supplierDao.commitTransaction();
+		Assert.assertNotNull(supplierDao);
+		Assert.assertEquals(supplier.getCompanyname(), supplierDB.getCompanyname());
 	}
 	@Test
 	public void testCountCustomers()
 	{
-		try {
-
-			SupplierDao supplierDao= df.createSupplierDao();
-			supplierDao.beginTransaction();
-			Long number =  supplierDao. findNumberOfCustomers("Richter eG").orElse(null);
-			supplierDao.commitTransaction();
-			Assert.assertNotNull(number);
-			Assert.assertEquals(5l,number.longValue());
-
-		} catch (Throwable e) {
-			e.printStackTrace();
-			Assert.fail();
-		}
+		SupplierDao supplierDao= df.createSupplierDao();
+		supplierDao.beginTransaction();
+		Long number =  supplierDao. findNumberOfCustomers("Richter eG").orElse(null);
+		supplierDao.commitTransaction();
+		Assert.assertNotNull(number);
+		Assert.assertEquals(5l,number.longValue());
 	}
 }

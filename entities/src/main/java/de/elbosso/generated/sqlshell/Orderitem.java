@@ -30,7 +30,7 @@ public class Orderitem
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_orderitem_id;
+	private Integer m_orderitem_id;
 
 	@ManyToOne
 	@JoinColumn(name = "orderid"
@@ -64,16 +64,19 @@ public class Orderitem
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_orderitem_quantity;
+	private Integer m_orderitem_quantity;
 
-	public java.lang.Integer getId()
+//id
+	public Integer getId()
 	{
 		return m_orderitem_id;
 	}
-	public void setId(java.lang.Integer v_id)
+	public void setId(Integer v_id)
 	{
 		m_orderitem_id=v_id;
 	}
+//orderid
+//it is a reference
 	public Theorder getTheorder()
 	{
 		return m_orderitem_theorder;
@@ -82,6 +85,8 @@ public class Orderitem
 	{
 		m_orderitem_theorder=v_theorder;
 	}
+//productid
+//it is a reference
 	public Product getProduct()
 	{
 		return m_orderitem_product;
@@ -90,6 +95,7 @@ public class Orderitem
 	{
 		m_orderitem_product=v_product;
 	}
+//unitprice
 	public java.math.BigDecimal getUnitprice()
 	{
 		return m_orderitem_unitprice;
@@ -98,11 +104,12 @@ public class Orderitem
 	{
 		m_orderitem_unitprice=v_unitprice;
 	}
-	public java.lang.Integer getQuantity()
+//quantity
+	public Integer getQuantity()
 	{
 		return m_orderitem_quantity;
 	}
-	public void setQuantity(java.lang.Integer v_quantity)
+	public void setQuantity(Integer v_quantity)
 	{
 		m_orderitem_quantity=v_quantity;
 	}

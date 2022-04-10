@@ -19,10 +19,6 @@ public class Product
 	//@Id
 	//@Column(name="ROWID")
 	//private String rowid_id;
-
-	@ManyToMany(mappedBy = "m_product_via_orderitems")
-	private Set<Theorder> m_theorder_via_orderitems = new HashSet();
-
 	@OneToMany(mappedBy = "m_orderitem_product", cascade = CascadeType.DETACH)
 	private Set<Orderitem> m_product_orderitems = new HashSet();
 
@@ -36,7 +32,7 @@ public class Product
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_product_id;
+	private Integer m_product_id;
 
 	@NotNull
 	@Column(name = "productname"
@@ -45,7 +41,7 @@ public class Product
 		, precision=50
 		, scale=0
 	)
-	private java.lang.String m_product_productname;
+	private String m_product_productname;
 
 	@ManyToOne
 	@JoinColumn(name = "supplierid"
@@ -67,7 +63,7 @@ public class Product
 		, precision=30
 		, scale=0
 	)
-	private java.lang.String m_product_package;
+	private String m_product_package;
 
 	@NotNull
 	@Column(name = "isdiscontinued"
@@ -76,16 +72,18 @@ public class Product
 		, precision=1
 		, scale=0
 	)
-	private java.lang.Boolean m_product_isdiscontinued;
+	private Boolean m_product_isdiscontinued;
 
-	public java.lang.Integer getId()
+//id
+	public Integer getId()
 	{
 		return m_product_id;
 	}
-	public void setId(java.lang.Integer v_id)
+	public void setId(Integer v_id)
 	{
 		m_product_id=v_id;
 	}
+//it is an export
 	public Set<Orderitem> getOrderitems()
 	{
 		return m_product_orderitems;
@@ -94,14 +92,17 @@ public class Product
 	{
 		m_product_orderitems=v_orderitems;
 	}
-	public java.lang.String getProductname()
+//productname
+	public String getProductname()
 	{
 		return m_product_productname;
 	}
-	public void setProductname(java.lang.String v_productname)
+	public void setProductname(String v_productname)
 	{
 		m_product_productname=v_productname;
 	}
+//supplierid
+//it is a reference
 	public Supplier getSupplier()
 	{
 		return m_product_supplier;
@@ -110,6 +111,7 @@ public class Product
 	{
 		m_product_supplier=v_supplier;
 	}
+//unitprice
 	public java.math.BigDecimal getUnitprice()
 	{
 		return m_product_unitprice;
@@ -118,29 +120,24 @@ public class Product
 	{
 		m_product_unitprice=v_unitprice;
 	}
-	public java.lang.String getPackage()
+//package
+	public String getPackage()
 	{
 		return m_product_package;
 	}
-	public void setPackage(java.lang.String v_package)
+	public void setPackage(String v_package)
 	{
 		m_product_package=v_package;
 	}
-	public java.lang.Boolean getIsdiscontinued()
+//isdiscontinued
+	public Boolean getIsdiscontinued()
 	{
 		return m_product_isdiscontinued;
 	}
-	public void setIsdiscontinued(java.lang.Boolean v_isdiscontinued)
+	public void setIsdiscontinued(Boolean v_isdiscontinued)
 	{
 		m_product_isdiscontinued=v_isdiscontinued;
 	}
 
-	public Set<Theorder> getTheorder_via_orderitems()
-	{
-		return m_theorder_via_orderitems;
-	}
-	public void setTheorder_via_orderitems(Set<Theorder> v_theorders)
-	{
-		m_theorder_via_orderitems=v_theorders;
-	}
+//public Set<Theorder> getTheorder_via_orderitems()
 }

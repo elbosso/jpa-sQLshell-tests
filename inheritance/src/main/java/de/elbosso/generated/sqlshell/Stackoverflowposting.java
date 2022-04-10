@@ -33,7 +33,7 @@ extends Posting
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_stackoverflowposting_permalink;
+	private String m_stackoverflowposting_permalink;
 
 	public Posting getPosting()
 	{
@@ -43,11 +43,11 @@ extends Posting
 	{
 		m_stackoverflowposting_posting=v_posting;
 	}
-	public java.lang.String getPermalink()
+	public String getPermalink()
 	{
 		return m_stackoverflowposting_permalink;
 	}
-	public void setPermalink(java.lang.String v_permalink)
+	public void setPermalink(String v_permalink)
 	{
 		m_stackoverflowposting_permalink=v_permalink;
 	}

@@ -13,20 +13,11 @@ import java.util.HashSet;
 )
 public class Albums
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
-	@ManyToMany
-	@JoinTable(
-	  name = "media_types_tracks",
-	  joinColumns = @JoinColumn(name = "AlbumId"),
-	  inverseJoinColumns = @JoinColumn(name = "MediaTypeId"))
-	private Set<Media_types> m_media_types_via_trackss = new HashSet();
-
-	@ManyToMany
-	@JoinTable(
-	  name = "genres_tracks",
-	  joinColumns = @JoinColumn(name = "AlbumId"),
-	  inverseJoinColumns = @JoinColumn(name = "GenreId"))
-	private Set<Genres> m_genres_via_trackss = new HashSet();
 
 	@OneToMany(mappedBy = "m_tracks_albums", cascade = CascadeType.DETACH)
 	private Set<Tracks> m_albums_trackss = new HashSet();
@@ -59,6 +50,7 @@ public class Albums
 	private Artists m_albums_artists;
 
 
+//AlbumId
 	public Integer getAlbumId()
 	{
 		return m_albums_AlbumId;
@@ -67,6 +59,7 @@ public class Albums
 	{
 		m_albums_AlbumId=v_AlbumId;
 	}
+//it is an export
 	public Set<Tracks> getTrackss()
 	{
 		return m_albums_trackss;
@@ -75,6 +68,7 @@ public class Albums
 	{
 		m_albums_trackss=v_trackss;
 	}
+//Title
 	public String getTitle()
 	{
 		return m_albums_Title;
@@ -83,6 +77,8 @@ public class Albums
 	{
 		m_albums_Title=v_Title;
 	}
+//ArtistId
+//it is a reference
 	public Artists getArtists()
 	{
 		return m_albums_artists;
@@ -92,20 +88,6 @@ public class Albums
 		m_albums_artists=v_artists;
 	}
 
-	public Set<Media_types> getMedia_types_via_trackss()
-	{
-		return m_media_types_via_trackss;
-	}
-	public void setMedia_types_via_trackss(Set<Media_types> v_media_typess)
-	{
-		m_media_types_via_trackss=v_media_typess;
-	}
-	public Set<Genres> getGenres_via_trackss()
-	{
-		return m_genres_via_trackss;
-	}
-	public void setGenres_via_trackss(Set<Genres> v_genress)
-	{
-		m_genres_via_trackss=v_genress;
-	}
+//public Set<Media_types> getMedia_types_via_trackss()
+//public Set<Genres> getGenres_via_trackss()
 }

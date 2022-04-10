@@ -15,18 +15,15 @@ import java.util.HashSet;
 )
 public class Tracks
 {
-
-	@ManyToMany(mappedBy = "m_tracks_via_invoice_itemss")
-	private Set<Invoices> m_invoices_via_invoice_itemss = new HashSet();
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@ManyToMany(mappedBy = "m_tracks_via_playlist_tracks")
 	private Set<Playlists> m_playlists_via_playlist_tracks = new HashSet();
-
 	@OneToMany(mappedBy = "m_invoice_items_tracks", cascade = CascadeType.DETACH)
 	private Set<Invoice_items> m_tracks_invoice_itemss = new HashSet();
-
-	@OneToMany(mappedBy = "m_playlist_track_tracks", cascade = CascadeType.DETACH)
-	private Set<Playlist_track> m_tracks_playlist_tracks = new HashSet();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -102,6 +99,7 @@ public class Tracks
 	)
 	private Float m_tracks_UnitPrice;
 
+//TrackId
 	public Integer getTrackId()
 	{
 		return m_tracks_TrackId;
@@ -110,6 +108,7 @@ public class Tracks
 	{
 		m_tracks_TrackId=v_TrackId;
 	}
+//it is an export
 	public Set<Invoice_items> getInvoice_itemss()
 	{
 		return m_tracks_invoice_itemss;
@@ -118,14 +117,7 @@ public class Tracks
 	{
 		m_tracks_invoice_itemss=v_invoice_itemss;
 	}
-	public Set<Playlist_track> getPlaylist_tracks()
-	{
-		return m_tracks_playlist_tracks;
-	}
-	public void setPlaylist_tracks(Set<Playlist_track> v_playlist_tracks)
-	{
-		m_tracks_playlist_tracks=v_playlist_tracks;
-	}
+//Name
 	public String getName()
 	{
 		return m_tracks_Name;
@@ -134,6 +126,8 @@ public class Tracks
 	{
 		m_tracks_Name=v_Name;
 	}
+//AlbumId
+//it is a reference
 	public Albums getAlbums()
 	{
 		return m_tracks_albums;
@@ -142,6 +136,8 @@ public class Tracks
 	{
 		m_tracks_albums=v_albums;
 	}
+//MediaTypeId
+//it is a reference
 	public Media_types getMedia_types()
 	{
 		return m_tracks_media_types;
@@ -150,6 +146,8 @@ public class Tracks
 	{
 		m_tracks_media_types=v_media_types;
 	}
+//GenreId
+//it is a reference
 	public Genres getGenres()
 	{
 		return m_tracks_genres;
@@ -158,6 +156,7 @@ public class Tracks
 	{
 		m_tracks_genres=v_genres;
 	}
+//Composer
 	public String getComposer()
 	{
 		return m_tracks_Composer;
@@ -166,6 +165,7 @@ public class Tracks
 	{
 		m_tracks_Composer=v_Composer;
 	}
+//Milliseconds
 	public Integer getMilliseconds()
 	{
 		return m_tracks_Milliseconds;
@@ -174,6 +174,7 @@ public class Tracks
 	{
 		m_tracks_Milliseconds=v_Milliseconds;
 	}
+//Bytes
 	public Integer getBytes()
 	{
 		return m_tracks_Bytes;
@@ -182,6 +183,7 @@ public class Tracks
 	{
 		m_tracks_Bytes=v_Bytes;
 	}
+//UnitPrice
 	public Float getUnitPrice()
 	{
 		return m_tracks_UnitPrice;
@@ -191,14 +193,8 @@ public class Tracks
 		m_tracks_UnitPrice=v_UnitPrice;
 	}
 
-	public Set<Invoices> getInvoices_via_invoice_itemss()
-	{
-		return m_invoices_via_invoice_itemss;
-	}
-	public void setInvoices_via_invoice_itemss(Set<Invoices> v_invoicess)
-	{
-		m_invoices_via_invoice_itemss=v_invoicess;
-	}
+//public Set<Invoices> getInvoices_via_invoice_itemss()
+//public Set<Playlists> getPlaylists_via_playlist_tracks()
 	public Set<Playlists> getPlaylists_via_playlist_tracks()
 	{
 		return m_playlists_via_playlist_tracks;

@@ -22,24 +22,20 @@ public class OrderitemTest
 
 	@Test
 	public void testScarcity() {
-		try {
-			OrderitemDao orderitemDao= df.createOrderitemDao();
-			orderitemDao.beginTransaction();
-			List<Orderitem> scarce20=  orderitemDao.findByScarcity(20).orElse(Collections.EMPTY_LIST);
-			List<Orderitem> scarce10=  orderitemDao.findByScarcity(10).orElse(Collections.EMPTY_LIST);
-			List<Orderitem> scarce3=  orderitemDao.findByScarcity(3).orElse(Collections.EMPTY_LIST);
-			orderitemDao.commitTransaction();
-			Assert.assertTrue(scarce20.size()>-1);
-			Assert.assertTrue(scarce10.size()>-1);
-			Assert.assertTrue(scarce3.size()>-1);
-			Assert.assertTrue(scarce3.size()<=scarce10.size());
-			Assert.assertTrue(scarce3.size()<=scarce20.size());
-			Assert.assertTrue(scarce10.size()<=scarce20.size());
+		OrderitemDao orderitemDao= df.createOrderitemDao();
+		orderitemDao.beginTransaction();
+		List<Orderitem> scarce20=  orderitemDao.findByScarcity(20).orElse(Collections.EMPTY_LIST);
+		List<Orderitem> scarce10=  orderitemDao.findByScarcity(10).orElse(Collections.EMPTY_LIST);
+		List<Orderitem> scarce3=  orderitemDao.findByScarcity(3).orElse(Collections.EMPTY_LIST);
+		orderitemDao.commitTransaction();
+		Assert.assertTrue(scarce20.size()>-1);
+		Assert.assertTrue(scarce10.size()>-1);
+		Assert.assertTrue(scarce3.size()>-1);
+		Assert.assertTrue(scarce3.size()<=scarce10.size());
+		Assert.assertTrue(scarce3.size()<=scarce20.size());
+		Assert.assertTrue(scarce10.size()<=scarce20.size());
 //			Assert.assertEquals(product.getProductname(), productDB.getProductname());
 
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
 	}
 	@Test
 	public void testMax()
@@ -58,22 +54,16 @@ public class OrderitemTest
 	@Test
 	public void testMaxQuantities()
 	{
-		try
+		OrderitemDao orderitemDao = df.createOrderitemDao();
+		orderitemDao.beginTransaction();
+		Integer max = orderitemDao.findMaxQuantity();
+		orderitemDao.commitTransaction();
+		Assert.assertEquals(10,max.intValue());
+		List<Orderitem> mo=  orderitemDao.findMaxQuantities().orElse(Collections.EMPTY_LIST);
+		Assert.assertFalse(mo.isEmpty());
+		for(Orderitem orderitem:mo)
 		{
-			OrderitemDao orderitemDao = df.createOrderitemDao();
-			orderitemDao.beginTransaction();
-			Integer max = orderitemDao.findMaxQuantity();
-			orderitemDao.commitTransaction();
-			Assert.assertEquals(10,max.intValue());
-			List<Orderitem> mo=  orderitemDao.findMaxQuantities().orElse(Collections.EMPTY_LIST);
-			Assert.assertFalse(mo.isEmpty());
-			for(Orderitem orderitem:mo)
-			{
-				Assert.assertEquals(max,orderitem.getQuantity());
-			}
-		} catch (Throwable e) {
-			e.printStackTrace();
-			Assert.fail();
+			Assert.assertEquals(max,orderitem.getQuantity());
 		}
 	}
 	@Test

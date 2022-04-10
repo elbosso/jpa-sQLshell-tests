@@ -14,6 +14,10 @@ import java.util.HashSet;
 )
 public class Invoice_items
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +63,7 @@ public class Invoice_items
 	)
 	private Integer m_invoice_items_Quantity;
 
+//InvoiceLineId
 	public Integer getInvoiceLineId()
 	{
 		return m_invoice_items_InvoiceLineId;
@@ -67,6 +72,8 @@ public class Invoice_items
 	{
 		m_invoice_items_InvoiceLineId=v_InvoiceLineId;
 	}
+//InvoiceId
+//it is a reference
 	public Invoices getInvoices()
 	{
 		return m_invoice_items_invoices;
@@ -75,6 +82,8 @@ public class Invoice_items
 	{
 		m_invoice_items_invoices=v_invoices;
 	}
+//TrackId
+//it is a reference
 	public Tracks getTracks()
 	{
 		return m_invoice_items_tracks;
@@ -83,6 +92,7 @@ public class Invoice_items
 	{
 		m_invoice_items_tracks=v_tracks;
 	}
+//UnitPrice
 	public Float getUnitPrice()
 	{
 		return m_invoice_items_UnitPrice;
@@ -91,6 +101,7 @@ public class Invoice_items
 	{
 		m_invoice_items_UnitPrice=v_UnitPrice;
 	}
+//Quantity
 	public Integer getQuantity()
 	{
 		return m_invoice_items_Quantity;

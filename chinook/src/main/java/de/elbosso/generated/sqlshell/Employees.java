@@ -13,10 +13,12 @@ import java.util.HashSet;
 )
 public class Employees
 {
-
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 	@OneToMany(mappedBy = "m_customers_employees", cascade = CascadeType.DETACH)
 	private Set<Customers> m_employees_customerss = new HashSet();
-
 	@OneToMany(mappedBy = "m_employees_employees", cascade = CascadeType.DETACH)
 	private Set<Employees> m_employees_employeess = new HashSet();
 
@@ -134,6 +136,7 @@ public class Employees
 	)
 	private String m_employees_Email;
 
+//EmployeeId
 	public Integer getEmployeeId()
 	{
 		return m_employees_EmployeeId;
@@ -142,6 +145,7 @@ public class Employees
 	{
 		m_employees_EmployeeId=v_EmployeeId;
 	}
+//it is an export
 	public Set<Customers> getCustomerss()
 	{
 		return m_employees_customerss;
@@ -158,6 +162,7 @@ public class Employees
 	{
 		m_employees_employeess=v_employeess;
 	}
+//LastName
 	public String getLastName()
 	{
 		return m_employees_LastName;
@@ -166,6 +171,7 @@ public class Employees
 	{
 		m_employees_LastName=v_LastName;
 	}
+//FirstName
 	public String getFirstName()
 	{
 		return m_employees_FirstName;
@@ -174,6 +180,7 @@ public class Employees
 	{
 		m_employees_FirstName=v_FirstName;
 	}
+//Title
 	public String getTitle()
 	{
 		return m_employees_Title;
@@ -182,6 +189,8 @@ public class Employees
 	{
 		m_employees_Title=v_Title;
 	}
+//ReportsTo
+//it is a reference
 	public Employees getEmployees()
 	{
 		return m_employees_employees;
@@ -190,6 +199,7 @@ public class Employees
 	{
 		m_employees_employees=v_employees;
 	}
+//BirthDate
 	public String getBirthDate()
 	{
 		return m_employees_BirthDate;
@@ -198,6 +208,7 @@ public class Employees
 	{
 		m_employees_BirthDate=v_BirthDate;
 	}
+//HireDate
 	public String getHireDate()
 	{
 		return m_employees_HireDate;
@@ -206,6 +217,7 @@ public class Employees
 	{
 		m_employees_HireDate=v_HireDate;
 	}
+//Address
 	public String getAddress()
 	{
 		return m_employees_Address;
@@ -214,6 +226,7 @@ public class Employees
 	{
 		m_employees_Address=v_Address;
 	}
+//City
 	public String getCity()
 	{
 		return m_employees_City;
@@ -222,6 +235,7 @@ public class Employees
 	{
 		m_employees_City=v_City;
 	}
+//State
 	public String getState()
 	{
 		return m_employees_State;
@@ -230,6 +244,7 @@ public class Employees
 	{
 		m_employees_State=v_State;
 	}
+//Country
 	public String getCountry()
 	{
 		return m_employees_Country;
@@ -238,6 +253,7 @@ public class Employees
 	{
 		m_employees_Country=v_Country;
 	}
+//PostalCode
 	public String getPostalCode()
 	{
 		return m_employees_PostalCode;
@@ -246,6 +262,7 @@ public class Employees
 	{
 		m_employees_PostalCode=v_PostalCode;
 	}
+//Phone
 	public String getPhone()
 	{
 		return m_employees_Phone;
@@ -254,6 +271,7 @@ public class Employees
 	{
 		m_employees_Phone=v_Phone;
 	}
+//Fax
 	public String getFax()
 	{
 		return m_employees_Fax;
@@ -262,6 +280,7 @@ public class Employees
 	{
 		m_employees_Fax=v_Fax;
 	}
+//Email
 	public String getEmail()
 	{
 		return m_employees_Email;

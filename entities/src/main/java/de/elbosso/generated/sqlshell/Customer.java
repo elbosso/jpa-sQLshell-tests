@@ -21,7 +21,6 @@ public class Customer
 /*
 A column in a table of placenames with geospatial coordinates
 */
-
 	@OneToMany(mappedBy = "m_theorder_customer", cascade = CascadeType.DETACH)
 	private Set<Theorder> m_customer_theorders = new HashSet();
 
@@ -35,7 +34,7 @@ A column in a table of placenames with geospatial coordinates
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_customer_id;
+	private Integer m_customer_id;
 
 	@NotNull
 	@Column(name = "firstname"
@@ -44,7 +43,7 @@ A column in a table of placenames with geospatial coordinates
 		, precision=40
 		, scale=0
 	)
-	private java.lang.String m_customer_firstname;
+	private String m_customer_firstname;
 
 	@NotNull
 	@Column(name = "lastname"
@@ -53,37 +52,39 @@ A column in a table of placenames with geospatial coordinates
 		, precision=40
 		, scale=0
 	)
-	private java.lang.String m_customer_lastname;
+	private String m_customer_lastname;
 
 	@Column(name = "city"
 		, length=40
 		, precision=40
 		, scale=0
 	)
-	private java.lang.String m_customer_city;
+	private String m_customer_city;
 
 	@Column(name = "country"
 		, length=40
 		, precision=40
 		, scale=0
 	)
-	private java.lang.String m_customer_country;
+	private String m_customer_country;
 
 	@Column(name = "phone"
 		, length=20
 		, precision=20
 		, scale=0
 	)
-	private java.lang.String m_customer_phone;
+	private String m_customer_phone;
 
-	public java.lang.Integer getId()
+//id
+	public Integer getId()
 	{
 		return m_customer_id;
 	}
-	public void setId(java.lang.Integer v_id)
+	public void setId(Integer v_id)
 	{
 		m_customer_id=v_id;
 	}
+//it is an export
 	public Set<Theorder> getTheorders()
 	{
 		return m_customer_theorders;
@@ -92,43 +93,48 @@ A column in a table of placenames with geospatial coordinates
 	{
 		m_customer_theorders=v_theorders;
 	}
-	public java.lang.String getFirstname()
+//firstname
+	public String getFirstname()
 	{
 		return m_customer_firstname;
 	}
-	public void setFirstname(java.lang.String v_firstname)
+	public void setFirstname(String v_firstname)
 	{
 		m_customer_firstname=v_firstname;
 	}
-	public java.lang.String getLastname()
+//lastname
+	public String getLastname()
 	{
 		return m_customer_lastname;
 	}
-	public void setLastname(java.lang.String v_lastname)
+	public void setLastname(String v_lastname)
 	{
 		m_customer_lastname=v_lastname;
 	}
-	public java.lang.String getCity()
+//city
+	public String getCity()
 	{
 		return m_customer_city;
 	}
-	public void setCity(java.lang.String v_city)
+	public void setCity(String v_city)
 	{
 		m_customer_city=v_city;
 	}
-	public java.lang.String getCountry()
+//country
+	public String getCountry()
 	{
 		return m_customer_country;
 	}
-	public void setCountry(java.lang.String v_country)
+	public void setCountry(String v_country)
 	{
 		m_customer_country=v_country;
 	}
-	public java.lang.String getPhone()
+//phone
+	public String getPhone()
 	{
 		return m_customer_phone;
 	}
-	public void setPhone(java.lang.String v_phone)
+	public void setPhone(String v_phone)
 	{
 		m_customer_phone=v_phone;
 	}

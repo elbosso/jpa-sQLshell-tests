@@ -20,13 +20,6 @@ public class Theorder
 	//@Column(name="ROWID")
 	//private String rowid_id;
 
-	@ManyToMany
-	@JoinTable(
-	  name = "product_orderitem",
-	  joinColumns = @JoinColumn(name = "orderid"),
-	  inverseJoinColumns = @JoinColumn(name = "productid"))
-	private Set<Product> m_product_via_orderitems = new HashSet();
-
 	@OneToMany(mappedBy = "m_orderitem_theorder", cascade = CascadeType.DETACH)
 	private Set<Orderitem> m_theorder_orderitems = new HashSet();
 
@@ -40,7 +33,7 @@ public class Theorder
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_theorder_id;
+	private Integer m_theorder_id;
 
 	@NotNull
 	@Column(name = "orderdate"
@@ -56,7 +49,7 @@ public class Theorder
 		, precision=10
 		, scale=0
 	)
-	private java.lang.String m_theorder_ordernumber;
+	private String m_theorder_ordernumber;
 
 	@ManyToOne
 	@JoinColumn(name = "customerid"
@@ -73,14 +66,16 @@ public class Theorder
 	)
 	private java.math.BigDecimal m_theorder_totalamount;
 
-	public java.lang.Integer getId()
+//id
+	public Integer getId()
 	{
 		return m_theorder_id;
 	}
-	public void setId(java.lang.Integer v_id)
+	public void setId(Integer v_id)
 	{
 		m_theorder_id=v_id;
 	}
+//it is an export
 	public Set<Orderitem> getOrderitems()
 	{
 		return m_theorder_orderitems;
@@ -89,6 +84,7 @@ public class Theorder
 	{
 		m_theorder_orderitems=v_orderitems;
 	}
+//orderdate
 	public java.sql.Timestamp getOrderdate()
 	{
 		return m_theorder_orderdate;
@@ -97,14 +93,17 @@ public class Theorder
 	{
 		m_theorder_orderdate=v_orderdate;
 	}
-	public java.lang.String getOrdernumber()
+//ordernumber
+	public String getOrdernumber()
 	{
 		return m_theorder_ordernumber;
 	}
-	public void setOrdernumber(java.lang.String v_ordernumber)
+	public void setOrdernumber(String v_ordernumber)
 	{
 		m_theorder_ordernumber=v_ordernumber;
 	}
+//customerid
+//it is a reference
 	public Customer getCustomer()
 	{
 		return m_theorder_customer;
@@ -113,6 +112,7 @@ public class Theorder
 	{
 		m_theorder_customer=v_customer;
 	}
+//totalamount
 	public java.math.BigDecimal getTotalamount()
 	{
 		return m_theorder_totalamount;
@@ -122,12 +122,5 @@ public class Theorder
 		m_theorder_totalamount=v_totalamount;
 	}
 
-	public Set<Product> getProduct_via_orderitems()
-	{
-		return m_product_via_orderitems;
-	}
-	public void setProduct_via_orderitems(Set<Product> v_products)
-	{
-		m_product_via_orderitems=v_products;
-	}
+//public Set<Product> getProduct_via_orderitems()
 }

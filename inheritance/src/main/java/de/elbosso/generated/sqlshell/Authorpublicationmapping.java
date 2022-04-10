@@ -28,7 +28,7 @@ public class Authorpublicationmapping
 		, precision=10
 		, scale=0
 	)
-	private java.lang.Integer m_authorpublicationmapping_id;
+	private Integer m_authorpublicationmapping_id;
 
 	@ManyToOne
 	@JoinColumn(name = "authorid"
@@ -46,11 +46,11 @@ public class Authorpublicationmapping
 	private Publication m_authorpublicationmapping_publication;
 
 
-	public java.lang.Integer getId()
+	public Integer getId()
 	{
 		return m_authorpublicationmapping_id;
 	}
-	public void setId(java.lang.Integer v_id)
+	public void setId(Integer v_id)
 	{
 		m_authorpublicationmapping_id=v_id;
 	}

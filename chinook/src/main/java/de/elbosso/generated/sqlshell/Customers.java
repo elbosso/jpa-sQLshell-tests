@@ -13,7 +13,10 @@ import java.util.HashSet;
 )
 public class Customers
 {
-
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 	@OneToMany(mappedBy = "m_invoices_customers", cascade = CascadeType.DETACH)
 	private Set<Invoices> m_customers_invoicess = new HashSet();
 
@@ -119,6 +122,7 @@ public class Customers
 	private Employees m_customers_employees;
 
 
+//CustomerId
 	public Integer getCustomerId()
 	{
 		return m_customers_CustomerId;
@@ -127,6 +131,7 @@ public class Customers
 	{
 		m_customers_CustomerId=v_CustomerId;
 	}
+//it is an export
 	public Set<Invoices> getInvoicess()
 	{
 		return m_customers_invoicess;
@@ -135,6 +140,7 @@ public class Customers
 	{
 		m_customers_invoicess=v_invoicess;
 	}
+//FirstName
 	public String getFirstName()
 	{
 		return m_customers_FirstName;
@@ -143,6 +149,7 @@ public class Customers
 	{
 		m_customers_FirstName=v_FirstName;
 	}
+//LastName
 	public String getLastName()
 	{
 		return m_customers_LastName;
@@ -151,6 +158,7 @@ public class Customers
 	{
 		m_customers_LastName=v_LastName;
 	}
+//Company
 	public String getCompany()
 	{
 		return m_customers_Company;
@@ -159,6 +167,7 @@ public class Customers
 	{
 		m_customers_Company=v_Company;
 	}
+//Address
 	public String getAddress()
 	{
 		return m_customers_Address;
@@ -167,6 +176,7 @@ public class Customers
 	{
 		m_customers_Address=v_Address;
 	}
+//City
 	public String getCity()
 	{
 		return m_customers_City;
@@ -175,6 +185,7 @@ public class Customers
 	{
 		m_customers_City=v_City;
 	}
+//State
 	public String getState()
 	{
 		return m_customers_State;
@@ -183,6 +194,7 @@ public class Customers
 	{
 		m_customers_State=v_State;
 	}
+//Country
 	public String getCountry()
 	{
 		return m_customers_Country;
@@ -191,6 +203,7 @@ public class Customers
 	{
 		m_customers_Country=v_Country;
 	}
+//PostalCode
 	public String getPostalCode()
 	{
 		return m_customers_PostalCode;
@@ -199,6 +212,7 @@ public class Customers
 	{
 		m_customers_PostalCode=v_PostalCode;
 	}
+//Phone
 	public String getPhone()
 	{
 		return m_customers_Phone;
@@ -207,6 +221,7 @@ public class Customers
 	{
 		m_customers_Phone=v_Phone;
 	}
+//Fax
 	public String getFax()
 	{
 		return m_customers_Fax;
@@ -215,6 +230,7 @@ public class Customers
 	{
 		m_customers_Fax=v_Fax;
 	}
+//Email
 	public String getEmail()
 	{
 		return m_customers_Email;
@@ -223,6 +239,8 @@ public class Customers
 	{
 		m_customers_Email=v_Email;
 	}
+//SupportRepId
+//it is a reference
 	public Employees getEmployees()
 	{
 		return m_customers_employees;

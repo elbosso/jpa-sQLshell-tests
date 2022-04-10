@@ -10,16 +10,17 @@ import java.util.HashSet;
 )
 public class Playlists
 {
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 
 	@ManyToMany
 	@JoinTable(
-	  name = "tracks_playlist_track",
+	  name = "playlist_track",
 	  joinColumns = @JoinColumn(name = "PlaylistId"),
 	  inverseJoinColumns = @JoinColumn(name = "TrackId"))
 	private Set<Tracks> m_tracks_via_playlist_tracks = new HashSet();
-
-	@OneToMany(mappedBy = "m_playlist_track_playlists", cascade = CascadeType.DETACH)
-	private Set<Playlist_track> m_playlists_playlist_tracks = new HashSet();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +41,7 @@ public class Playlists
 	)
 	private String m_playlists_Name;
 
+//PlaylistId
 	public Integer getPlaylistId()
 	{
 		return m_playlists_PlaylistId;
@@ -48,14 +50,8 @@ public class Playlists
 	{
 		m_playlists_PlaylistId=v_PlaylistId;
 	}
-	public Set<Playlist_track> getPlaylist_tracks()
-	{
-		return m_playlists_playlist_tracks;
-	}
-	public void setPlaylist_tracks(Set<Playlist_track> v_playlist_tracks)
-	{
-		m_playlists_playlist_tracks=v_playlist_tracks;
-	}
+//it is an export
+//Name
 	public String getName()
 	{
 		return m_playlists_Name;
@@ -65,6 +61,7 @@ public class Playlists
 		m_playlists_Name=v_Name;
 	}
 
+//public Set<Tracks> getTracks_via_playlist_tracks()
 	public Set<Tracks> getTracks_via_playlist_tracks()
 	{
 		return m_tracks_via_playlist_tracks;

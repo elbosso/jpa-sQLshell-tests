@@ -19,7 +19,6 @@ extends Publication
 	//@Id
 	//@Column(name="ROWID")
 	//private String rowid_id;
-
 	@OneToMany(mappedBy = "m_stackoverflowposting_posting", cascade = CascadeType.DETACH)
 	private Set<Stackoverflowposting> m_posting_stackoverflowpostings = new HashSet();
 
@@ -37,7 +36,7 @@ extends Publication
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_posting_url;
+	private String m_posting_url;
 
 	public Publication getPublication()
 	{
@@ -55,11 +54,11 @@ extends Publication
 	{
 		m_posting_stackoverflowpostings=v_stackoverflowpostings;
 	}
-	public java.lang.String getUrl()
+	public String getUrl()
 	{
 		return m_posting_url;
 	}
-	public void setUrl(java.lang.String v_url)
+	public void setUrl(String v_url)
 	{
 		m_posting_url=v_url;
 	}

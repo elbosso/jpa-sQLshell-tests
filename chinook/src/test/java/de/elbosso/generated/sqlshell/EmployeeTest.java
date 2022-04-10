@@ -20,12 +20,12 @@ public class EmployeeTest
 	@Test
 	public void test() {
 		try {
-/*			JpaDao<Employees> employeesDao= df.<Employees>createDao(Employees.class);
+			JpaDao<Employees> employeesDao= df.<Employees>createDao(Employees.class);
 			employeesDao.beginTransaction();
 			java.util.Optional<Employees> oemp=employeesDao.find(java.lang.Integer.valueOf(7));
 			employeesDao.commitTransaction();
 			Assert.assertTrue(oemp.isPresent());
-*/
+
 
 //			Assert.assertEquals(0,book.getAuthor_via_authorpublicationmappings().size());
 		} catch (Throwable e) {

@@ -33,7 +33,7 @@ extends Publication
 		, precision=255
 		, scale=0
 	)
-	private java.lang.String m_book_isbn;
+	private String m_book_isbn;
 
 	public Publication getPublication()
 	{
@@ -43,11 +43,11 @@ extends Publication
 	{
 		m_book_publication=v_publication;
 	}
-	public java.lang.String getIsbn()
+	public String getIsbn()
 	{
 		return m_book_isbn;
 	}
-	public void setIsbn(java.lang.String v_isbn)
+	public void setIsbn(String v_isbn)
 	{
 		m_book_isbn=v_isbn;
 	}

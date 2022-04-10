@@ -10,7 +10,10 @@ import java.util.HashSet;
 )
 public class Artists
 {
-
+	//in case there is no @Id annotation - just uncomment the following three lines!
+	//@Id
+	//@Column(name="ROWID")
+	//private String rowid_id;
 	@OneToMany(mappedBy = "m_albums_artists", cascade = CascadeType.DETACH)
 	private Set<Albums> m_artists_albumss = new HashSet();
 
@@ -33,6 +36,7 @@ public class Artists
 	)
 	private String m_artists_Name;
 
+//ArtistId
 	public Integer getArtistId()
 	{
 		return m_artists_ArtistId;
@@ -41,6 +45,7 @@ public class Artists
 	{
 		m_artists_ArtistId=v_ArtistId;
 	}
+//it is an export
 	public Set<Albums> getAlbumss()
 	{
 		return m_artists_albumss;
@@ -49,6 +54,7 @@ public class Artists
 	{
 		m_artists_albumss=v_albumss;
 	}
+//Name
 	public String getName()
 	{
 		return m_artists_Name;
