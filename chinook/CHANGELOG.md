@@ -5,6 +5,56 @@ Changelog of jpa-SQLshell-tests.
 ## Unreleased
 ### No issue
 
+**inheritance tests added**
+
+
+[fa48f90e338d2be](https://github.com/elbosso/selfcontained_java_app_archetype/commit/fa48f90e338d2be) Juergen Key *2022-04-10 14:37:15*
+
+**reworking sQLshell JPA plugin**
+
+
+[4f70f655485a8f7](https://github.com/elbosso/selfcontained_java_app_archetype/commit/4f70f655485a8f7) Juergen Key *2022-04-10 13:03:09*
+
+**reworking sQLshell JPA plugin**
+
+
+[10518aab64bee33](https://github.com/elbosso/selfcontained_java_app_archetype/commit/10518aab64bee33) Juergen Key *2022-04-09 18:39:03*
+
+**reworking sQLshell JPA plugin**
+
+
+[f6cd048bcc20963](https://github.com/elbosso/selfcontained_java_app_archetype/commit/f6cd048bcc20963) Juergen Key *2022-04-09 18:38:30*
+
+**link to source of example datamodel added**
+
+
+[d7c53e3026faa31](https://github.com/elbosso/selfcontained_java_app_archetype/commit/d7c53e3026faa31) Your Name *2022-04-07 18:25:20*
+
+**added model.sql for module inheritance**
+
+
+[9d5c19ce4ecffe0](https://github.com/elbosso/selfcontained_java_app_archetype/commit/9d5c19ce4ecffe0) Jürgen Key *2022-04-05 15:51:38*
+
+**Create model.sql**
+
+
+[53b3bd0c177b88b](https://github.com/elbosso/selfcontained_java_app_archetype/commit/53b3bd0c177b88b) Jürgen Key *2022-04-05 15:49:14*
+
+**links to sources of example databases added**
+
+
+[6ece3be071e0e12](https://github.com/elbosso/selfcontained_java_app_archetype/commit/6ece3be071e0e12) Jürgen Key *2022-04-05 15:48:12*
+
+**typo fixed**
+
+
+[e91047e99bbcbb4](https://github.com/elbosso/selfcontained_java_app_archetype/commit/e91047e99bbcbb4) Jürgen Key *2022-04-05 14:20:55*
+
+**corrected links to the model visualization images**
+
+
+[edb3ca19bea8384](https://github.com/elbosso/selfcontained_java_app_archetype/commit/edb3ca19bea8384) Jürgen Key *2022-04-05 14:19:35*
+
 **final tests of generation process inside sQLshell**
 
 

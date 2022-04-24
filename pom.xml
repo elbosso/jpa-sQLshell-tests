@@ -19,40 +19,46 @@
         <project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
+        <elbosso.artifacts.version>1.9.0-SNAPSHOT</elbosso.artifacts.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>EL BOSSOs (https://elbosso.github.io/index.html) Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/elbosso/default</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+		<!--BeanShell-->
+		<repository>
+		  <id>Boundless Repository</id>
+		  <url>https://repo.boundlessgeo.com/main/</url>
+		</repository>
+    </repositories>
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>de.elbosso</groupId>
+                <artifactId>bom</artifactId>
+                <version>${elbosso.artifacts.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- SQLite database JDBC -->
+            <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
             <dependency>
                 <groupId>org.xerial</groupId>
                 <artifactId>sqlite-jdbc</artifactId>
-                <version>3.32.3</version>
+                <version>3.36.0.3</version>
             </dependency>
 
-            <!-- Logging -->
-            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.7.36</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>1.2.11</version>
-                <scope>test</scope>
-            </dependency>
-
-            <!-- Test -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-                <scope>test</scope>
-            </dependency>
 
             <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
             <dependency>
@@ -79,13 +85,6 @@
                 <groupId>com.github.gwenn</groupId>
                 <artifactId>sqlite-dialect</artifactId>
                 <version>0.1.0</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
-            <dependency>
-                <groupId>org.xerial</groupId>
-                <artifactId>sqlite-jdbc</artifactId>
-                <version>3.36.0.3</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
