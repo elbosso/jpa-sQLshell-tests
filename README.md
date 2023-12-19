@@ -22,7 +22,7 @@ from an existimg datamodel (meaning from actual tables in a database). But it tu
 of the box) and I was not patient enough to comb through arcane configuration files.
 
 Remembering that i had the [sQLshell](https://elbosso.github.io/sQLshell) having numerous plugins already to document existing models starting from a table and then following 
-all foreign key relationships, I thought it schould be possible to actually generate java source code instead of
+all foreign key relationships, I thought it should be possible to actually generate java source code instead of
 HTML.
 
 The most important things for me were:
